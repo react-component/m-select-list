@@ -10,9 +10,6 @@ React Mobile SelectList Component
 [![gemnasium deps][gemnasium-image]][gemnasium-url]
 [![node version][node-image]][node-url]
 [![npm download][download-image]][download-url]
-[![Sauce Test Status](https://saucelabs.com/buildstatus/rmc-select-list)](https://saucelabs.com/u/rmc-select-list)
-
-[![Sauce Test Status](https://saucelabs.com/browser-matrix/rmc-select-list.svg)](https://saucelabs.com/u/rmc-select-list)
 
 [npm-image]: http://img.shields.io/npm/v/rmc-select-list.svg?style=flat-square
 [npm-url]: http://npmjs.org/package/rmc-select-list
@@ -27,12 +24,6 @@ React Mobile SelectList Component
 [download-image]: https://img.shields.io/npm/dm/rmc-select-list.svg?style=flat-square
 [download-url]: https://npmjs.org/package/rmc-select-list
 
-
-## Browser Support
-
-|![IE](https://raw.github.com/alrra/browser-logos/master/internet-explorer/internet-explorer_48x48.png) | ![Chrome](https://raw.github.com/alrra/browser-logos/master/chrome/chrome_48x48.png) | ![Firefox](https://raw.github.com/alrra/browser-logos/master/firefox/firefox_48x48.png) | ![Opera](https://raw.github.com/alrra/browser-logos/master/opera/opera_48x48.png) | ![Safari](https://raw.github.com/alrra/browser-logos/master/safari/safari_48x48.png)|
-| --- | --- | --- | --- | --- |
-| IE 8+ ✔ | Chrome 31.0+ ✔ | Firefox 31.0+ ✔ | Opera 30.0+ ✔ | Safari 7.0+ ✔ |
 
 ## Screenshots
 
