@@ -1,0 +1,50 @@
+{
+  "name": "rc-m-select-list",
+  "version": "1.0.0",
+  "description": "m-select-list ui component for react",
+  "keywords": [
+    "react",
+    "react-component",
+    "react-m-select-list",
+    "m-select-list"
+  ],
+  "homepage": "https://github.com/react-component/m-select-list",
+  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/react-component/m-select-list.git"
+  },
+  "bugs": {
+    "url": "https://github.com/react-component/m-select-list/issues"
+  },
+  "files":["lib", "assets/*.css"],
+  "licenses": "MIT",
+  
+  "main":"./lib/web/index",
+  "config":{
+    "port": 8000
+  },
+  "scripts": {
+    "build": "rc-tools run build",
+    "gh-pages": "rc-tools run gh-pages",
+    "start": "rc-server",
+    "pub": "rc-tools run pub",
+    "lint": "rc-tools run lint",
+    "karma": "rc-tools run karma",
+    "saucelabs": "rc-tools run saucelabs",
+    "browser-test": "rc-tools run browser-test",
+    "browser-test-cover": "rc-tools run browser-test-cover"
+  },
+  "devDependencies": {
+    "expect.js": "0.3.x",
+    "pre-commit": "1.x",
+    "rc-server": "3.x",
+    "rc-tools": "4.x",
+    "react": "0.14.x",
+    "react-addons-test-utils": "0.14.x",
+    "react-dom": "0.14.x"
+  },
+  "pre-commit": [
+    "lint"
+  ]
+}
