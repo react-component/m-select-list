@@ -1,7 +1,7 @@
-# rc-m-select-list
+# rmc-select-list
 ---
 
-React MSelectList Component
+React Mobile SelectList Component
 
 
 [![NPM version][npm-image]][npm-url]
@@ -10,12 +10,12 @@ React MSelectList Component
 [![gemnasium deps][gemnasium-image]][gemnasium-url]
 [![node version][node-image]][node-url]
 [![npm download][download-image]][download-url]
-[![Sauce Test Status](https://saucelabs.com/buildstatus/rc-m-select-list)](https://saucelabs.com/u/rc-m-select-list)
+[![Sauce Test Status](https://saucelabs.com/buildstatus/rmc-select-list)](https://saucelabs.com/u/rmc-select-list)
 
-[![Sauce Test Status](https://saucelabs.com/browser-matrix/rc-m-select-list.svg)](https://saucelabs.com/u/rc-m-select-list)
+[![Sauce Test Status](https://saucelabs.com/browser-matrix/rmc-select-list.svg)](https://saucelabs.com/u/rmc-select-list)
 
-[npm-image]: http://img.shields.io/npm/v/rc-m-select-list.svg?style=flat-square
-[npm-url]: http://npmjs.org/package/rc-m-select-list
+[npm-image]: http://img.shields.io/npm/v/rmc-select-list.svg?style=flat-square
+[npm-url]: http://npmjs.org/package/rmc-select-list
 [travis-image]: https://img.shields.io/travis/react-component/m-select-list.svg?style=flat-square
 [travis-url]: https://travis-ci.org/react-component/m-select-list
 [coveralls-image]: https://img.shields.io/coveralls/react-component/m-select-list.svg?style=flat-square
@@ -24,8 +24,8 @@ React MSelectList Component
 [gemnasium-url]: https://gemnasium.com/react-component/m-select-list
 [node-image]: https://img.shields.io/badge/node.js-%3E=_0.10-green.svg?style=flat-square
 [node-url]: http://nodejs.org/download/
-[download-image]: https://img.shields.io/npm/dm/rc-m-select-list.svg?style=flat-square
-[download-url]: https://npmjs.org/package/rc-m-select-list
+[download-image]: https://img.shields.io/npm/dm/rmc-select-list.svg?style=flat-square
+[download-url]: https://npmjs.org/package/rmc-select-list
 
 
 ## Browser Support
@@ -64,13 +64,13 @@ online example: http://react-component.github.io/m-select-list/examples/
 ## install
 
 
-[![rc-m-select-list](https://nodei.co/npm/rc-m-select-list.png)](https://npmjs.org/package/rc-m-select-list)
+[![rmc-select-list](https://nodei.co/npm/rmc-select-list.png)](https://npmjs.org/package/rmc-select-list)
 
 
 ## Usage
 
 ```js
-var MSelectList = require('rc-m-select-list');
+var MSelectList = require('rmc-select-list');
 var React = require('react');
 React.render(<MSelectList />, container);
 ```
@@ -109,4 +109,4 @@ http://localhost:8000/node_modules/rc-server/node_modules/node-jscover/lib/front
 
 ## License
 
-rc-m-select-list is released under the MIT license.
+rmc-select-list is released under the MIT license.
