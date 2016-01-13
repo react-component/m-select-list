@@ -52,7 +52,7 @@ const MSelectList = React.createClass({
     const dataKey = this.props.dataKey;
     const transData = {};
     const cache = {};
-    data.forEach((item, index) => {
+    data.forEach((item) => {
       item.QF = item.QF || item.spell[0].toUpperCase();
       item.abbr = item.abbr || item.spell.replace(/[a-z]+/g, '');
       transData[item.QF] = transData[item.QF] || [];
@@ -83,8 +83,8 @@ const MSelectList = React.createClass({
               data-key={item[dataKey]}
               data-spell={item.spell}>{item[dataValue]}</a></li>);
           })}
-        </ul>
-      ])
+        </ul>,
+      ]);
     };
     if (current && current[dataKey] && current[dataValue]) {
       qfHtml.push(getQfItem(searchKey, '当前'));

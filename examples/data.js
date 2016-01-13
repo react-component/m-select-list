@@ -1,3 +1,5 @@
+/*eslint-disable no-alert, no-console*/
+
 const province = [{
   key: '11',
   value: '北京市',
