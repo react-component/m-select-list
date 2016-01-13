@@ -1,6 +1,6 @@
 {
   "name": "rmc-select-list",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "m-select-list ui component for react",
   "keywords": [
     "react",
@@ -17,11 +17,13 @@
   "bugs": {
     "url": "https://github.com/react-component/m-select-list/issues"
   },
-  "files":["lib", "assets/*.css"],
+  "files": [
+    "lib",
+    "assets/*.css"
+  ],
   "licenses": "MIT",
-  
-  "main":"./lib/web/index",
-  "config":{
+  "main": "./lib/web/index",
+  "config": {
     "port": 8000
   },
   "scripts": {
@@ -46,5 +48,8 @@
   },
   "pre-commit": [
     "lint"
-  ]
+  ],
+  "dependencies": {
+    "classnames": "~2.2.3"
+  }
 }

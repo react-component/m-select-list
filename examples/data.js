@@ -1,0 +1,127 @@
+const province = [{
+  key: '11',
+  value: '北京市',
+  spell: 'BeiJingShi'
+}, {
+  key: '12',
+  value: '天津市',
+  spell: 'TianJinShi'
+}, {
+  key: '13',
+  value: '河北省',
+  spell: 'HeBeiSheng'
+}, {
+  key: '14',
+  value: '山西省',
+  spell: 'ShanXiSheng'
+}, {
+  key: '15',
+  value: '内蒙古自治区',
+  spell: 'NeiMengGuZiZhiQu'
+}, {
+  key: '21',
+  value: '辽宁省',
+  spell: 'LiaoNingSheng'
+}, {
+  key: '22',
+  value: '吉林省',
+  spell: 'JiLinSheng'
+}, {
+  key: '23',
+  value: '黑龙江省',
+  spell: 'HeiLongJiangSheng'
+}, {
+  key: '31',
+  value: '上海市',
+  spell: 'ShangHaiShi'
+}, {
+  key: '32',
+  value: '江苏省',
+  spell: 'JiangSuSheng'
+}, {
+  key: '33',
+  value: '浙江省',
+  spell: 'ZheJiangSheng'
+}, {
+  key: '34',
+  value: '安徽省',
+  spell: 'AnHuiSheng'
+}, {
+  key: '35',
+  value: '福建省',
+  spell: 'FuJianSheng'
+}, {
+  key: '36',
+  value: '江西省',
+  spell: 'JiangXiSheng'
+}, {
+  key: '37',
+  value: '山东省',
+  spell: 'ShanDongSheng'
+}, {
+  key: '41',
+  value: '河南省',
+  spell: 'HeNanSheng'
+}, {
+  key: '42',
+  value: '湖北省',
+  spell: 'HuBeiSheng'
+}, {
+  key: '43',
+  value: '湖南省',
+  spell: 'HuNanSheng'
+}, {
+  key: '44',
+  value: '广东省',
+  spell: 'GuangDongSheng'
+}, {
+  key: '45',
+  value: '广西壮族自治区',
+  spell: 'GuangXiZhuangZuZiZhiQu'
+}, {
+  key: '46',
+  value: '海南省',
+  spell: 'HaiNanSheng'
+}, {
+  key: '50',
+  value: '重庆市',
+  spell: 'ChongQingShi'
+}, {
+  key: '51',
+  value: '四川省',
+  spell: 'SiChuanSheng'
+}, {
+  key: '52',
+  value: '贵州省',
+  spell: 'GuiZhouSheng'
+}, {
+  key: '53',
+  value: '云南省',
+  spell: 'YunNanSheng'
+}, {
+  key: '54',
+  value: '西藏自治区',
+  spell: 'XiCangZiZhiQu'
+}, {
+  key: '61',
+  value: '陕西省',
+  spell: 'ShanXiSheng'
+}, {
+  key: '62',
+  value: '甘肃省',
+  spell: 'GanSuSheng'
+}, {
+  key: '63',
+  value: '青海省',
+  spell: 'QingHaiSheng'
+}, {
+  key: '64',
+  value: '宁夏回族自治区',
+  spell: 'NingXiaHuiZuZiZhiQu'
+}, {
+  key: '65',
+  value: '新疆维吾尔自治区',
+  spell: 'XinJiangWeiWuErZiZhiQu'
+}];
+
+export {province}

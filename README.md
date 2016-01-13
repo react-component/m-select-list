@@ -41,53 +41,28 @@ npm start
 
 http://localhost:8000/examples/
 
-
 online example: http://react-component.github.io/m-select-list/examples/
 
-
-## Feature
-
-* support ie8,ie8+,chrome,firefox,safari
-
-### Keyboard
-
-
 ## install
-
 
 [![rmc-select-list](https://nodei.co/npm/rmc-select-list.png)](https://npmjs.org/package/rmc-select-list)
 
 
 ## Usage
 
-```js
-var MSelectList = require('rmc-select-list');
-var React = require('react');
-React.render(<MSelectList />, container);
-```
+see example
 
 ## API
 
 ### props
 
-<table class="table table-bordered table-striped">
-    <thead>
-    <tr>
-        <th style="width: 100px;">name</th>
-        <th style="width: 50px;">type</th>
-        <th style="width: 50px;">default</th>
-        <th>description</th>
-    </tr>
-    </thead>
-    <tbody>
-        <tr>
-          <td>className</td>
-          <td>String</td>
-          <td></td>
-          <td>additional css class of root dom node</td>
-        </tr>
-    </tbody>
-</table>
+| name     | description    | type     | default      |
+|----------|----------------|----------|--------------|
+|className | additional css class of root dom node | String | '' |
+|prefixCls | prefix class | String | 'rmc-select-list' |
+|data | The data of cascade | array  |  |
+|value | selected value | array  |  |
+|onChange |  | Function(value) | - |
 
 
 ## Test Case

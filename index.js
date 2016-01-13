@@ -1,3 +1,3 @@
 // export this package's api
-import MSelectList from './src/web/';
+import MSelectList from './src/';
 export default MSelectList;
