@@ -1,6 +1,7 @@
 import React, {PropTypes} from 'react';
 // import assign from 'object-assign';
 import classNames from 'classnames';
+import {EventManager} from './util';
 
 function noop() {
 }
@@ -29,12 +30,28 @@ const MSelectList = React.createClass({
       value: this.props.value,
     };
   },
+  componentDidMount() {
+    const {viewport} = this.refs;
+    const eventManager = new EventManager(viewport);
+    function _touchStart() {}
+    function _touchMove() {}
+    function _touchEnd() {}
+    eventManager.addHandler({
+        start: _touchStart,
+        move: _touchMove,
+        end: _touchEnd
+    });
+  },
   componentWillReceiveProps(nextProps) {
     if ('value' in nextProps) {
       this.setState({
         value: nextProps.value,
       });
     }
+  },
+  componentWillUnmount() {
+    const {viewport} = this.refs;
+    console.log(viewport);
   },
   onQfSelect(e) {
     e.preventDefault();
@@ -106,7 +123,7 @@ const MSelectList = React.createClass({
           <li><a onClick={this.onSelect} data-qf-target=".ls-search"><i className={`${prefixCls}-icon-search`}></i></a></li>
           {qfHtml}
       </ul>
-      <div className={`${prefixCls}-body`}>
+      <div className={`${prefixCls}-body`} ref="viewport">
           <div className={`${prefixCls}-scroller`}>
               <div className={classNames(`${prefixCls}-search`, `${prefixCls}-input-autoclear`)}>
                   <div className={`${prefixCls}-search-input`}>
