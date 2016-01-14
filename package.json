@@ -22,7 +22,7 @@
     "assets/*.css"
   ],
   "licenses": "MIT",
-  "main": "./lib/web/index",
+  "main": "./lib/index",
   "config": {
     "port": 8000
   },

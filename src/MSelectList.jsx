@@ -37,9 +37,9 @@ const MSelectList = React.createClass({
     function _touchMove() {}
     function _touchEnd() {}
     eventManager.addHandler({
-        start: _touchStart,
-        move: _touchMove,
-        end: _touchEnd
+      start: _touchStart,
+      move: _touchMove,
+      end: _touchEnd,
     });
   },
   componentWillReceiveProps(nextProps) {
