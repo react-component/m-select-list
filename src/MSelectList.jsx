@@ -2,7 +2,7 @@ import React, {PropTypes} from 'react';
 import ReactDOM from 'react-dom';
 // import assign from 'object-assign';
 import classNames from 'classnames';
-import {EventManager, handleTapping, handleScrolling, handleQuickBar} from './util';
+import {EventManager, handleTapping, handleQuickBar} from './util';
 
 function noop() {
 }
@@ -23,6 +23,7 @@ const MSelectList = React.createClass({
     defaultSelectedItem: PropTypes.object,
     onChange: PropTypes.func,
     onSelect: PropTypes.func,
+    onQfSelect: PropTypes.func,
   },
   getDefaultProps() {
     return {
@@ -34,6 +35,7 @@ const MSelectList = React.createClass({
       showQfList: true,
       onChange: noop,
       onSelect: noop,
+      onQfSelect: noop,
     };
   },
   getInitialState() {
@@ -51,7 +53,6 @@ const MSelectList = React.createClass({
 
     const eventManager = new EventManager(viewport);
     handleTapping(eventManager, this);
-    handleScrolling(eventManager, this);
     handleQuickBar(this, ReactDOM.findDOMNode(this));
   },
   componentWillReceiveProps(nextProps) {
@@ -70,16 +71,17 @@ const MSelectList = React.createClass({
     const {viewport} = this.refs;
     console.log(viewport);
   },
-  onQfSelect(e) {
-    e.preventDefault();
+  onQfSelect(selectedItem) {
+    this.props.onQfSelect(selectedItem);
   },
-  onSelect(e) {
-    e.preventDefault();
+  onSelect(selectedItem) {
+    this.props.onSelect(selectedItem);
   },
   onChange(e) {
     this.setState({
       value: e.target.value,
     });
+    this.props.onChange(e.target.value, e);
   },
   onSearch() {
     this.setState({
@@ -130,7 +132,7 @@ const MSelectList = React.createClass({
   },
   renderCommonItem(data) {
     return data.map((item, index) => {
-      return (<li key={index}><a onClick={this.onSelect}
+      return (<li key={index}><a
         data-key={item[this.props.dataKey]}
         data-spell={item.spell}>{item[this.props.dataValue]}</a></li>);
     });
@@ -149,7 +151,7 @@ const MSelectList = React.createClass({
     };
     const getSection = (sk, QF, d) => {
       return ([
-        <div className={classNames(`${this.props.prefixCls}-item-order`, `key_${searchKey}`)}>{QF}</div>,
+        <div className={classNames(`${this.props.prefixCls}-item-order`, searchKey)}>{QF}</div>,
         <ul className={`${this.props.prefixCls}-item`}>
           {this.renderCommonItem(d)}
         </ul>,
@@ -180,11 +182,11 @@ const MSelectList = React.createClass({
     };
     const normalViewCls = {
       [`${prefixCls}-content`]: true,
-      [`${prefixCls}-hide`]: this.state.showSearch,
+      [`${prefixCls}-hide`]: this.state.showSearch && !!this.state.value.length,
     };
     const searchViewCls = {
       [`${prefixCls}-content`]: true,
-      [`${prefixCls}-hide`]: !this.state.showSearch,
+      [`${prefixCls}-hide`]: !this.state.showSearch && this.state.value.length,
     };
     const lighterCls = {
       [`${prefixCls}-lighter`]: true,
@@ -192,7 +194,7 @@ const MSelectList = React.createClass({
     };
     return (<div className={classNames(className, `${prefixCls}-playground`)}>
       <ul className={classNames(qfListCls)} ref="qfList">
-          <li><a onClick={this.onSelect} data-qf-target=".ls-search"><i className={`${prefixCls}-icon-search`}></i></a></li>
+          <li><a data-qf-target=".ls-search"><i className={`${prefixCls}-icon-search`}></i></a></li>
           {qfHtml}
       </ul>
       <div className={`${prefixCls}-body`} ref="viewport">

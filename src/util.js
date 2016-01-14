@@ -16,13 +16,15 @@ const getTime = Date.now || function() {
 };
 
 function addEvent(el, type, callback) {
-  for (let i = 0; i < type.split(' ').length; i++) {
-    el.addEventListener(type[i], callback, false);
+  const t = type.split(' ');
+  for (let i = 0; i < t.length; i++) {
+    el.addEventListener(t[i], callback, false);
   }
 }
 function removeEvent(el, type, callback) {
-  for (let i = 0; i < type.split(' ').length; i++) {
-    el.removeEventListener(type[i], callback, false);
+  const t = type.split(' ');
+  for (let i = 0; i < t.length; i++) {
+    el.removeEventListener(t[i], callback, false);
   }
 }
 
@@ -356,7 +358,7 @@ export function handleTapping(eventManager, instance) {
         instance.onSearch();
       }, 0);
     } else if (target.getAttribute('data-cid') === 'clear' || target.parentNode.getAttribute('data-cid') === 'clear') {
-      self.clear();
+      instance.onClear();
       isHit = true;
     }
 
@@ -373,7 +375,7 @@ export function handleTapping(eventManager, instance) {
   });
 
   if (isBadMobile || !isTouchable) {
-    return handleScrolling(eventManager);
+    return handleScrolling(eventManager, instance);
   }
 
   instance._useNative = true;
