@@ -58,7 +58,7 @@ see example
 | name     | description    | type     | default      |
 |----------|----------------|----------|--------------|
 |className | additional css class of root dom node | String | '' |
-|prefixCls | prefix class | String | 'rmc-select-list' |
+|prefixCls | prefix class | String | 'rmc-ls' |
 |placeholder | input placeholder | String | '搜索' |
 |data | The data of cascade | array  |  |
 |value | input value | String  | '' |
