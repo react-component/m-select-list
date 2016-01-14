@@ -10,14 +10,24 @@ import {province} from './data';
 const Demo = React.createClass({
   getInitialState() {
     return {
-      value: province[0],
+      selectedItem: province[0],
+      value: '',
     };
   },
   onChange(value) {
     console.log('onChange', value);
   },
+  onSelect(selectedItem) {
+    console.log('onSelect', selectedItem);
+  },
   render() {
-    return <MSelectList className="wrapper" data={province} value={this.state.value} onChange={this.onChange} />;
+    return (<MSelectList className="wrapper"
+      data={province}
+      selectedItem={this.state.selectedItem}
+      defaultValue="b"
+      onChange={this.onChange}
+      onSelect={this.onSelect}
+       />);
   },
 });
 

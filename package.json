@@ -50,6 +50,7 @@
     "lint"
   ],
   "dependencies": {
-    "classnames": "~2.2.3"
+    "classnames": "~2.2.3",
+    "object-assign": "^4.0.1"
   }
 }

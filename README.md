@@ -47,7 +47,6 @@ online example: http://react-component.github.io/m-select-list/examples/
 
 [![rmc-select-list](https://nodei.co/npm/rmc-select-list.png)](https://npmjs.org/package/rmc-select-list)
 
-
 ## Usage
 
 see example
@@ -60,10 +59,14 @@ see example
 |----------|----------------|----------|--------------|
 |className | additional css class of root dom node | String | '' |
 |prefixCls | prefix class | String | 'rmc-select-list' |
+|placeholder | input placeholder | String | '搜索' |
 |data | The data of cascade | array  |  |
-|value | selected value | array  |  |
-|onChange |  | Function(value) | - |
-
+|value | input value | String  | '' |
+|defaultValue | input default value | String  | '' |
+|selectedItem | input default value | Object  | - |
+|defaultSelectedItem | input default value | Object  | - |
+|onChange | input change | Function(value) | - |
+|onSelect | select item | Function(value) | - |
 
 ## Test Case
 
