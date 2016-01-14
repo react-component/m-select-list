@@ -27,25 +27,35 @@ webpackJsonp([0,1],[
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _reactDom = __webpack_require__(166);
+	var _reactDom = __webpack_require__(164);
 	
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 	
-	var _data = __webpack_require__(167);
+	var _data = __webpack_require__(168);
 	
 	var Demo = _react2['default'].createClass({
 	  displayName: 'Demo',
 	
 	  getInitialState: function getInitialState() {
 	    return {
-	      value: _data.province[0]
+	      selectedItem: _data.province[0],
+	      value: ''
 	    };
 	  },
 	  onChange: function onChange(value) {
 	    console.log('onChange', value);
 	  },
+	  onSelect: function onSelect(selectedItem) {
+	    console.log('onSelect', selectedItem);
+	  },
 	  render: function render() {
-	    return _react2['default'].createElement(_rmcSelectList2['default'], { className: 'wrapper', data: _data.province, value: this.state.value, onChange: this.onChange });
+	    return _react2['default'].createElement(_rmcSelectList2['default'], { className: 'wrapper',
+	      data: _data.province,
+	      selectedItem: this.state.selectedItem,
+	      defaultValue: 'b',
+	      onChange: this.onChange,
+	      onSelect: this.onSelect
+	    });
 	  }
 	});
 	
@@ -113,19 +123,29 @@ webpackJsonp([0,1],[
 	  value: true
 	});
 	
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+	
+	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) arr2[i] = arr[i]; return arr2; } else { return Array.from(arr); } }
+	
+	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 	
 	var _react = __webpack_require__(7);
 	
 	var _react2 = _interopRequireDefault(_react);
 	
+	var _reactDom = __webpack_require__(164);
+	
+	var _reactDom2 = _interopRequireDefault(_reactDom);
+	
 	// import assign from 'object-assign';
 	
-	var _classnames = __webpack_require__(164);
+	var _classnames = __webpack_require__(165);
 	
 	var _classnames2 = _interopRequireDefault(_classnames);
 	
-	var _util = __webpack_require__(165);
+	var _util = __webpack_require__(166);
 	
 	function noop() {}
 	
@@ -135,43 +155,62 @@ webpackJsonp([0,1],[
 	  propTypes: {
 	    children: _react.PropTypes.any,
 	    className: _react.PropTypes.string,
+	    prefixCls: _react.PropTypes.string,
+	    placeholder: _react.PropTypes.string,
 	    dataKey: _react.PropTypes.string,
 	    dataValue: _react.PropTypes.string,
-	    prefixCls: _react.PropTypes.string,
+	    showQfList: _react.PropTypes.bool,
 	    data: _react.PropTypes.array,
-	    value: _react.PropTypes.object,
-	    onChange: _react.PropTypes.func
+	    value: _react.PropTypes.string,
+	    defaultValue: _react.PropTypes.string,
+	    selectedItem: _react.PropTypes.object,
+	    defaultSelectedItem: _react.PropTypes.object,
+	    onChange: _react.PropTypes.func,
+	    onSelect: _react.PropTypes.func,
+	    onQfSelect: _react.PropTypes.func
 	  },
 	  getDefaultProps: function getDefaultProps() {
 	    return {
 	      prefixCls: 'rmc-ls',
+	      clickFeedBackCls: 'rmc-ls-on',
+	      placeholder: '搜索',
 	      dataKey: 'key',
 	      dataValue: 'value',
-	      onChange: noop
+	      showQfList: true,
+	      onChange: noop,
+	      onSelect: noop,
+	      onQfSelect: noop
 	    };
 	  },
 	  getInitialState: function getInitialState() {
 	    return {
-	      value: this.props.value
+	      showSearch: false,
+	      showLighter: false,
+	      showQfList: this.props.showQfList,
+	      value: this.props.value || this.props.defaultValue || '',
+	      selectedItem: this.props.selectedItem || this.props.defaultSelectedItem
 	    };
 	  },
 	  componentDidMount: function componentDidMount() {
-	    var viewport = this.refs.viewport;
+	    var _refs = this.refs;
+	    var viewport = _refs.viewport;
+	    var qfList = _refs.qfList;
+	
+	    qfList.style['margin-top'] = -(qfList.offsetHeight / 2 + 20) + 'px';
 	
 	    var eventManager = new _util.EventManager(viewport);
-	    function _touchStart() {}
-	    function _touchMove() {}
-	    function _touchEnd() {}
-	    eventManager.addHandler({
-	      start: _touchStart,
-	      move: _touchMove,
-	      end: _touchEnd
-	    });
+	    (0, _util.handleTapping)(eventManager, this);
+	    (0, _util.handleQuickBar)(this, _reactDom2['default'].findDOMNode(this));
 	  },
 	  componentWillReceiveProps: function componentWillReceiveProps(nextProps) {
 	    if ('value' in nextProps) {
 	      this.setState({
 	        value: nextProps.value
+	      });
+	    }
+	    if ('selectedItem' in nextProps) {
+	      this.setState({
+	        selectedItem: nextProps.selectedItem
 	      });
 	    }
 	  },
@@ -180,14 +219,49 @@ webpackJsonp([0,1],[
 	
 	    console.log(viewport);
 	  },
-	  onQfSelect: function onQfSelect(e) {
-	    e.preventDefault();
+	  onQfSelect: function onQfSelect(selectedItem) {
+	    this.props.onQfSelect(selectedItem);
 	  },
-	  onSelect: function onSelect(e) {
-	    e.preventDefault();
+	  onSelect: function onSelect(selectedItem) {
+	    this.props.onSelect(selectedItem);
 	  },
-	  onChange: function onChange(value) {
-	    console.log('onChange', value);
+	  onChange: function onChange(e) {
+	    this.setState({
+	      value: e.target.value
+	    });
+	    this.props.onChange(e.target.value, e);
+	  },
+	  onSearch: function onSearch() {
+	    this.setState({
+	      showQfList: false,
+	      showSearch: true
+	    });
+	  },
+	  onClear: function onClear() {
+	    var _this = this;
+	
+	    this.setState({
+	      value: '',
+	      showQfList: true,
+	      showSearch: false
+	    }, function () {
+	      _this.refs.sinput.blur();
+	    });
+	  },
+	  getMatchData: function getMatchData(v) {
+	    var _this2 = this;
+	
+	    var data = this.data;
+	    var found = [];
+	    var val = v.trim().toLowerCase();
+	    Object.keys(data).forEach(function (key) {
+	      data[key].forEach(function (d) {
+	        if (d[_this2.props.dataValue].indexOf(val) > -1 || d[_this2.props.dataKey].indexOf(val) > -1 || d.spell.toLowerCase().indexOf(val) > -1 || d.abbr.toLowerCase().indexOf(val) > -1) {
+	          found.push(d);
+	        }
+	      });
+	    });
+	    return found;
 	  },
 	  _initData: function _initData(data) {
 	    data.sort(function (a, b) {
@@ -205,13 +279,29 @@ webpackJsonp([0,1],[
 	    this.cache = cache;
 	    return transData;
 	  },
-	  renderData: function renderData() {
-	    var _this = this;
+	  renderCommonItem: function renderCommonItem(data) {
+	    var _this3 = this;
 	
-	    var data = this._initData(this.props.data);
-	    var current = this.props.value;
-	    var dataKey = this.props.dataKey;
-	    var dataValue = this.props.dataValue;
+	    return data.map(function (item, index) {
+	      return _react2['default'].createElement(
+	        'li',
+	        { key: index },
+	        _react2['default'].createElement(
+	          'a',
+	          {
+	            'data-key': item[_this3.props.dataKey],
+	            'data-spell': item.spell },
+	          item[_this3.props.dataValue]
+	        )
+	      );
+	    });
+	  },
+	  renderData: function renderData() {
+	    var _this4 = this;
+	
+	    var data = this._initData([].concat(_toConsumableArray(this.props.data)));
+	    this.data = data;
+	    var current = this.props.selectedItem;
 	    var searchKey = '_J_qf_key_DQ';
 	    var qfHtml = [];
 	    var normalHtml = [];
@@ -223,7 +313,7 @@ webpackJsonp([0,1],[
 	        { key: keyIndex },
 	        _react2['default'].createElement(
 	          'a',
-	          { onClick: _this.onQfSelect, 'data-qf-target': sk },
+	          { onClick: _this4.onQfSelect, 'data-qf-target': '.' + sk },
 	          QF
 	        )
 	      );
@@ -231,27 +321,15 @@ webpackJsonp([0,1],[
 	    var getSection = function getSection(sk, QF, d) {
 	      return [_react2['default'].createElement(
 	        'div',
-	        { className: (0, _classnames2['default'])(_this.props.prefixCls + '-item-order', 'key_' + searchKey) },
+	        { className: (0, _classnames2['default'])(_this4.props.prefixCls + '-item-order', searchKey) },
 	        QF
 	      ), _react2['default'].createElement(
 	        'ul',
-	        { className: _this.props.prefixCls + '-item' },
-	        d.map(function (item, index) {
-	          return _react2['default'].createElement(
-	            'li',
-	            { key: index },
-	            _react2['default'].createElement(
-	              'a',
-	              { onClick: _this.onSelect,
-	                'data-key': item[dataKey],
-	                'data-spell': item.spell },
-	              item[dataValue]
-	            )
-	          );
-	        })
+	        { className: _this4.props.prefixCls + '-item' },
+	        _this4.renderCommonItem(d)
 	      )];
 	    };
-	    if (current && current[dataKey] && current[dataValue]) {
+	    if (current && current[this.props.dataKey] && current[this.props.dataValue]) {
 	      qfHtml.push(getQfItem(searchKey, '当前'));
 	      normalHtml.push(getSection(searchKey, '当前地区', [current]));
 	    }
@@ -264,27 +342,38 @@ webpackJsonp([0,1],[
 	    return { qfHtml: qfHtml, normalHtml: normalHtml };
 	  },
 	  render: function render() {
+	    var _qfListCls, _normalViewCls, _searchViewCls, _lighterCls;
+	
 	    var _props = this.props;
 	    var className = _props.className;
 	    var prefixCls = _props.prefixCls;
+	    var placeholder = _props.placeholder;
 	
 	    var _renderData = this.renderData();
 	
 	    var qfHtml = _renderData.qfHtml;
 	    var normalHtml = _renderData.normalHtml;
 	
+	    var inputProps = {
+	      value: this.state.value,
+	      onChange: this.onChange
+	    };
+	    var qfListCls = (_qfListCls = {}, _defineProperty(_qfListCls, prefixCls + '-quick-search-bar', true), _defineProperty(_qfListCls, prefixCls + '-hide', !this.state.showQfList), _qfListCls);
+	    var normalViewCls = (_normalViewCls = {}, _defineProperty(_normalViewCls, prefixCls + '-content', true), _defineProperty(_normalViewCls, prefixCls + '-hide', this.state.showSearch && !!this.state.value.length), _normalViewCls);
+	    var searchViewCls = (_searchViewCls = {}, _defineProperty(_searchViewCls, prefixCls + '-content', true), _defineProperty(_searchViewCls, prefixCls + '-hide', !this.state.showSearch && this.state.value.length), _searchViewCls);
+	    var lighterCls = (_lighterCls = {}, _defineProperty(_lighterCls, prefixCls + '-lighter', true), _defineProperty(_lighterCls, prefixCls + '-hide', !this.state.showLighter), _lighterCls);
 	    return _react2['default'].createElement(
 	      'div',
 	      { className: (0, _classnames2['default'])(className, prefixCls + '-playground') },
 	      _react2['default'].createElement(
 	        'ul',
-	        { className: prefixCls + '-quick-search-bar' },
+	        { className: (0, _classnames2['default'])(qfListCls), ref: 'qfList' },
 	        _react2['default'].createElement(
 	          'li',
 	          null,
 	          _react2['default'].createElement(
 	            'a',
-	            { onClick: this.onSelect, 'data-qf-target': '.ls-search' },
+	            { 'data-qf-target': '.ls-search' },
 	            _react2['default'].createElement('i', { className: prefixCls + '-icon-search' })
 	          )
 	        ),
@@ -295,37 +384,43 @@ webpackJsonp([0,1],[
 	        { className: prefixCls + '-body', ref: 'viewport' },
 	        _react2['default'].createElement(
 	          'div',
-	          { className: prefixCls + '-scroller' },
+	          { className: prefixCls + '-scroller', ref: 'container' },
 	          _react2['default'].createElement(
 	            'div',
 	            { className: (0, _classnames2['default'])(prefixCls + '-search', prefixCls + '-input-autoclear') },
 	            _react2['default'].createElement(
 	              'div',
 	              { className: prefixCls + '-search-input' },
-	              _react2['default'].createElement('input', { className: prefixCls + '-search-value', type: 'text', placeholder: '搜索', value: '' }),
+	              _react2['default'].createElement('input', _extends({ className: prefixCls + '-search-value',
+	                type: 'text', placeholder: placeholder,
+	                'data-cid': 'sinput', ref: 'sinput' }, inputProps)),
 	              _react2['default'].createElement(
 	                'div',
 	                { className: prefixCls + '-search-clear',
+	                  'data-cid': 'clear',
 	                  style: { width: 'auto' } },
 	                _react2['default'].createElement('i', { className: prefixCls + '-icon-clear',
-	                  style: { visibility: 'hidden' } })
+	                  style: { visibility: this.state.showSearch ? 'visible' : 'hidden' } })
 	              )
 	            )
 	          ),
 	          _react2['default'].createElement(
 	            'div',
-	            { className: prefixCls + '-content' },
+	            { className: (0, _classnames2['default'])(normalViewCls) },
 	            normalHtml
 	          ),
-	          _react2['default'].createElement('div', { className: 'ls-content ls-hide' }),
 	          _react2['default'].createElement(
 	            'div',
-	            { style: { height: 60 } },
-	            ' '
+	            { className: (0, _classnames2['default'])(searchViewCls) },
+	            _react2['default'].createElement(
+	              'ul',
+	              { className: prefixCls + '-item' },
+	              this.renderCommonItem(this.getMatchData(this.state.value))
+	            )
 	          )
 	        )
 	      ),
-	      _react2['default'].createElement('div', { className: 'ls-lighter ls-hide' })
+	      _react2['default'].createElement('div', { className: (0, _classnames2['default'])(lighterCls), ref: 'lighter' })
 	    );
 	  }
 	});
@@ -19922,6 +20017,15 @@ webpackJsonp([0,1],[
 /* 164 */
 /***/ function(module, exports, __webpack_require__) {
 
+	'use strict';
+	
+	module.exports = __webpack_require__(9);
+
+
+/***/ },
+/* 165 */
+/***/ function(module, exports, __webpack_require__) {
+
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
 	  Copyright (c) 2016 Jed Watson.
 	  Licensed under the MIT License (MIT), see
@@ -19973,8 +20077,8 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 165 */
-/***/ function(module, exports) {
+/* 166 */
+/***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
@@ -19982,6 +20086,16 @@ webpackJsonp([0,1],[
 	  value: true
 	});
 	exports.EventManager = EventManager;
+	exports.handleScrolling = handleScrolling;
+	exports.handleTapping = handleTapping;
+	exports.handleQuickBar = handleQuickBar;
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+	
+	var _objectAssign = __webpack_require__(167);
+	
+	var _objectAssign2 = _interopRequireDefault(_objectAssign);
+	
 	var isTouchable = ('ontouchstart' in window);
 	exports.isTouchable = isTouchable;
 	var START = isTouchable ? 'touchstart' : 'mousedown';
@@ -19995,18 +20109,53 @@ webpackJsonp([0,1],[
 	var CLICK = isTouchable ? 'touchstart' : 'click';
 	
 	exports.CLICK = CLICK;
+	var VALVE = 10;
+	var isBadMobile = /Android[^\d]*(1|2|3|4\.0)/.test(window.navigator.appVersion) || /iPhone[^\d]*(5)/.test(window.navigator.appVersion);
+	
+	var getTime = Date.now || function () {
+	  return +new Date();
+	};
+	
 	function addEvent(el, type, callback) {
-	  type = type.split(' ');
-	  for (var i = 0, len = type.length; i < len; i++) {
-	    el.addEventListener(type[i], callback, false);
+	  var t = type.split(' ');
+	  for (var i = 0; i < t.length; i++) {
+	    el.addEventListener(t[i], callback, false);
+	  }
+	}
+	function removeEvent(el, type, callback) {
+	  var t = type.split(' ');
+	  for (var i = 0; i < t.length; i++) {
+	    el.removeEventListener(t[i], callback, false);
 	  }
 	}
 	
-	function removeEvent(el, type, callback) {
-	  type = type.split(' ');
-	  for (var i = 0, len = type.length; i < len; i++) {
-	    el.removeEventListener(type[i], callback, false);
+	function _event(e) {
+	  if (e.touches && e.touches.length) {
+	    return e.touches[0];
 	  }
+	  if (e.changedTouches && e.changedTouches.length) {
+	    return e.changedTouches[0];
+	  }
+	  return e;
+	}
+	function _pageX(e) {
+	  return _event(e).pageX;
+	}
+	function _getPageY(e) {
+	  return _event(e).pageY;
+	}
+	function momentum(current, start, time, deceleration) {
+	  var distance = current - start;
+	  var speed = Math.abs(distance) / time;
+	  var d = deceleration === undefined ? 0.0006 : deceleration;
+	
+	  var destination = current + speed * speed / (2 * d) * (distance < 0 ? -1 : 1);
+	  var duration = speed / d;
+	
+	  return {
+	    destination: Math.round(destination),
+	    duration: duration
+	  };
 	}
 	
 	// event management helper
@@ -20021,26 +20170,18 @@ webpackJsonp([0,1],[
 	
 	EventManager.prototype = {
 	  addHandler: function addHandler(event) {
-	    event.start && this._startEvents.push(event.start);
-	    event.move && this._moveEvents.push(event.move);
-	    event.end && this._endEvents.push(event.end);
+	    if (event.start) {
+	      this._startEvents.push(event.start);
+	    }
+	    if (event.move) {
+	      this._moveEvents.push(event.move);
+	    }
+	    if (event.end) {
+	      this._endEvents.push(event.end);
+	    }
 	  },
 	  startEvent: function startEvent() {
 	    var self = this;
-	
-	    // catch event starting from target
-	    addEvent(self.target, START, self._start = function (e) {
-	      self._startEvents.forEach(function (callback) {
-	        callback.call(self, e);
-	      });
-	
-	      self._endEvents.forEach(function (callback) {
-	        callback._isEnded = false;
-	      });
-	
-	      _startEvent();
-	    });
-	
 	    function _startEvent() {
 	      addEvent(window, MOVE, self._move = function (e) {
 	        self._moveEvents.forEach(function (callback) {
@@ -20053,54 +20194,472 @@ webpackJsonp([0,1],[
 	          callback.call(self, e);
 	          callback._isEnded = true;
 	        });
-	
 	        self.endEvent(true);
 	      }, false);
 	
 	      addEvent(window, CANCEL, self._cancel = function (e) {
 	        self._endEvents.forEach(function (callback) {
-	          !callback._isEnded && callback.call(self, e);
+	          if (!callback._isEnded) {
+	            callback.call(self, e);
+	          }
 	          callback._isEnded = true;
 	        });
-	
 	        self.endEvent(true);
 	      }, false);
 	    }
+	    // catch event starting from target
+	    addEvent(self.target, START, self._start = function (e) {
+	      self._startEvents.forEach(function (callback) {
+	        callback.call(self, e);
+	      });
+	      self._endEvents.forEach(function (callback) {
+	        callback._isEnded = false;
+	      });
+	      _startEvent();
+	    });
 	  },
 	  endEvent: function endEvent(keepStart) {
 	    if (!keepStart && this._start) {
 	      removeEvent(this.target, START, this._start, false);
 	      this._start = null;
 	    }
-	
 	    if (this._move) {
 	      removeEvent(window, MOVE, this._move, false);
 	      this._move = null;
 	    }
-	
 	    if (this._end) {
 	      removeEvent(window, END, this._end, false);
 	      this._end = null;
 	    }
-	
 	    if (this._cancel) {
 	      removeEvent(window, CANCEL, this._cancel, false);
 	      this._cancel = null;
 	    }
 	  }
 	};
-
-/***/ },
-/* 166 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
 	
-	module.exports = __webpack_require__(9);
-
+	function handleScrolling(eventManager, instance) {
+	  var _lastEl = undefined;
+	  var _startY = undefined;
+	  var _pageY = undefined;
+	  var _distY = undefined;
+	  var _isAnimating = undefined;
+	  var _startTime = undefined;
+	  var _endTime = undefined;
+	
+	  instance._y = 0;
+	  instance.refs.viewport.style.overflow = 'hidden';
+	
+	  var rException = /^(INPUT|TEXTAREA|BUTTON|SELECT)$/;
+	  var rAF = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame || function (callback) {
+	    window.setTimeout(callback, 1000 / 60);
+	  };
+	
+	  function _easing(k) {
+	    var kk = k;
+	    return Math.sqrt(1 - --kk * kk);
+	  }
+	
+	  function _translate(y) {
+	    var _currentPos = y;
+	    var MAX_HEIGHT = instance.refs.container.offsetHeight - instance.refs.viewport.offsetHeight;
+	
+	    if (_currentPos < -MAX_HEIGHT) {
+	      _currentPos = -MAX_HEIGHT;
+	    }
+	    if (_currentPos > 0) {
+	      _currentPos = 0;
+	    }
+	
+	    instance._y = Math.round(_currentPos);
+	    instance.refs.container.style.top = instance._y + 'px';
+	  }
+	
+	  function _animate(destY, startY, duration) {
+	    var startTime = getTime();
+	    var destTime = startTime + duration;
+	
+	    function step() {
+	      var now = getTime();
+	      var newY = undefined;
+	      var easing = undefined;
+	
+	      if (now >= destTime) {
+	        _translate(destY);
+	        return;
+	      }
+	
+	      now = (now - startTime) / duration;
+	      easing = _easing(now);
+	      newY = (destY - startY) * easing + startY;
+	      _translate(newY);
+	
+	      if (_isAnimating) {
+	        rAF(step);
+	      }
+	    }
+	
+	    _isAnimating = true;
+	    step();
+	  }
+	
+	  function _start(e) {
+	    var target = e.target;
+	    if (rException.test(target.tagName) || target.getAttribute('data-cid') === 'sinput') {
+	      return;
+	    }
+	    if (target.getAttribute('data-cid') === 'clear' || target.parentNode.getAttribute('data-cid') === 'clear') {
+	      instance.onClear();
+	      return;
+	    }
+	
+	    var _e = _event(e);
+	    _lastEl = _e.target;
+	    _startTime = getTime();
+	    _startY = instance._y;
+	    _pageY = _e.pageY;
+	    _distY = 0;
+	
+	    if (_isAnimating) {
+	      _isAnimating = false;
+	      _translate(_startY);
+	    }
+	
+	    e.preventDefault();
+	  }
+	
+	  function _move(e) {
+	    if (!_lastEl) {
+	      return;
+	    }
+	    var _e = _event(e);
+	    var _diff = Math.round(_e.pageY - _pageY);
+	
+	    _distY += _diff;
+	    _pageY = _e.pageY;
+	    instance._y += _diff;
+	    _translate(instance._y);
+	  }
+	
+	  function _end() {
+	    if (!_lastEl) {
+	      return;
+	    }
+	    _lastEl = null;
+	    if (Math.abs(_distY) < VALVE) {
+	      return;
+	    }
+	    _endTime = getTime();
+	    var _duration = _endTime - _startTime;
+	    if (_duration < 300) {
+	      var _momentum = momentum(instance._y, _startY, _duration);
+	
+	      if (Math.abs(_momentum.destination) > 0) {
+	        instance._y = _momentum.destination;
+	        _duration = Math.max(_duration, _momentum.duration);
+	        _animate(instance._y, _startY, _duration);
+	      }
+	    }
+	  }
+	
+	  eventManager.addHandler({
+	    start: _start,
+	    move: _move,
+	    end: _end
+	  });
+	}
+	
+	function handleTapping(eventManager, instance) {
+	  var _el = null;
+	  var _isEnded = false;
+	  var _deltaX = 0;
+	  var _deltaY = 0;
+	  var _lastPageX = 0;
+	  var _lastPageY = 0;
+	  var _noop = false;
+	
+	  function _touchStart(e) {
+	    if ((e.touches || [e]).length !== 1) {
+	      _noop = true;
+	      return;
+	    }
+	    var target = e.target;
+	    while (target) {
+	      if (!target.getAttribute || target.getAttribute('data-key')) {
+	        break;
+	      }
+	      target = target.parentNode;
+	    }
+	    if (!target.getAttribute) {
+	      target = e.target;
+	    }
+	
+	    _el = {
+	      _src: target,
+	      target: target,
+	      pageX: _pageX(e),
+	      pageY: _getPageY(e),
+	      time: getTime()
+	    };
+	
+	    _noop = false;
+	    _lastPageX = _el.pageX;
+	    _lastPageY = _el.pageY;
+	    _isEnded = false;
+	    _deltaX = 0;
+	    _deltaY = 0;
+	  }
+	
+	  function _touchMove(e) {
+	    if (_isEnded || _noop || !_el) {
+	      return;
+	    }
+	    _deltaX += _pageX(e) - _lastPageX;
+	    _deltaY += _getPageY(e) - _lastPageY;
+	    _lastPageX = _pageX(e);
+	    _lastPageY = _getPageY(e);
+	
+	    if (Math.abs(_deltaY) > VALVE || Math.abs(_deltaX) > VALVE) {
+	      _el = null;
+	    }
+	  }
+	
+	  function _touchEnd(e) {
+	    _isEnded = true;
+	    if (_noop || !_el) {
+	      return;
+	    }
+	    _deltaX += _pageX(e) - _lastPageX;
+	    _deltaY += _getPageY(e) - _lastPageY;
+	    _lastPageX = _pageX(e);
+	    _lastPageY = _getPageY(e);
+	
+	    if (Math.abs(_deltaY) > VALVE || Math.abs(_deltaX) > VALVE) {
+	      _el = null;
+	      return;
+	    }
+	
+	    var target = _el.target;
+	    var id = target.getAttribute('data-key');
+	    var isHit = false;
+	
+	    if (id) {
+	      setTimeout(function () {
+	        instance.onSelect(instance.cache[id + '_' + target.getAttribute('data-spell')]);
+	      }, 0);
+	      isHit = true;
+	    } else if (target.getAttribute('data-cid') === 'sinput') {
+	      setTimeout(function () {
+	        target.focus();
+	        instance.onSearch();
+	      }, 0);
+	    } else if (target.getAttribute('data-cid') === 'clear' || target.parentNode.getAttribute('data-cid') === 'clear') {
+	      instance.onClear();
+	      isHit = true;
+	    }
+	
+	    _el = null;
+	    if (isHit) {
+	      e.preventDefault();
+	    }
+	  }
+	
+	  eventManager.addHandler({
+	    start: _touchStart,
+	    move: _touchMove,
+	    end: _touchEnd
+	  });
+	
+	  if (isBadMobile || !isTouchable) {
+	    return handleScrolling(eventManager, instance);
+	  }
+	
+	  instance._useNative = true;
+	  (0, _objectAssign2['default'])(instance.refs.viewport.style, {
+	    '-webkit-overflow-scrolling': 'touch',
+	    'z-index': '998',
+	    'overflow': 'auto'
+	  });
+	}
+	
+	function handleQuickBar(instance, element) {
+	  var hCache = [];
+	  var qfList = instance.refs.qfList;
+	  var height = qfList.offsetHeight;
+	
+	  [].slice.call(qfList.querySelectorAll('[data-qf-target]')).forEach(function (d) {
+	    hCache.push([d]);
+	  });
+	
+	  var _avgH = height / hCache.length;
+	  var _top = 0;
+	
+	  for (var i = 0, len = hCache.length; i < len; i++) {
+	    _top = i * _avgH;
+	    hCache[i][1] = [_top, _top + _avgH];
+	  }
+	
+	  // relative to container
+	  function _getEle(e, basePos) {
+	    var _pos = undefined;
+	    if (e.pageY >= basePos.top && e.pageY <= basePos.top + height) {
+	      _pos = Math.floor((e.pageY - basePos.top) / _avgH);
+	      if (_pos in hCache) {
+	        return hCache[_pos][0];
+	      }
+	    }
+	    return null;
+	  }
+	
+	  var _inMoving = false;
+	  var _isProcessed = false;
+	  var _basePos = undefined;
+	  var tAttr = 'data-qf-target';
+	
+	  function _updatePosition(ele) {
+	    var pos = ele.offsetTop;
+	    if (instance._useNative) {
+	      setTimeout(function () {
+	        instance.refs.viewport.scrollTop = pos;
+	      }, 20);
+	    } else {
+	      instance._y = -pos;
+	      instance.refs.container.style.top = -pos + 'px';
+	    }
+	  }
+	  var _timer = undefined;
+	  function _updateLighter(ele, isEnd) {
+	    var el = ele;
+	    if (!el.getAttribute(tAttr)) {
+	      el = el.parentNode;
+	    }
+	    instance.refs.lighter.innerText = el.innerText.trim();
+	    instance.setState({
+	      showLighter: true
+	    });
+	    clearTimeout(_timer);
+	    _timer = setTimeout(function () {
+	      instance.setState({
+	        showLighter: false
+	      });
+	    }, 1000);
+	
+	    var cls = 'quick-search-over';
+	    hCache.forEach(function (d) {
+	      d[0].className = d[0].className.replace(cls, '');
+	    });
+	    if (!isEnd) {
+	      el.className = el.className + ' ' + cls;
+	    }
+	  }
+	
+	  var _target = undefined;
+	  function _start(e) {
+	    _target = e.target;
+	    if (_target.getAttribute(tAttr) || _target.parentNode.getAttribute(tAttr)) {
+	      _inMoving = true;
+	      _isProcessed = false;
+	      _basePos = qfList.getBoundingClientRect();
+	      _updateLighter(_target);
+	    }
+	    e.preventDefault();
+	    qfList.className += ' ' + instance.props.clickFeedBackCls;
+	  }
+	  function _move(e) {
+	    var ele = undefined;
+	    var id = undefined;
+	    var target = undefined;
+	
+	    if (_inMoving && _target) {
+	      target = _getEle(_event(e), _basePos);
+	      if (target) {
+	        _isProcessed = true;
+	        id = target.getAttribute(tAttr);
+	        ele = element.querySelector(id);
+	        if (ele) {
+	          _updatePosition(ele);
+	        }
+	        _updateLighter(target);
+	        _target = target;
+	      }
+	    }
+	    e.preventDefault();
+	  }
+	  function _end() {
+	    if (!_target) {
+	      return;
+	    }
+	    var id = _target.getAttribute(tAttr) || _target.parentNode.getAttribute(tAttr);
+	    var ele = undefined;
+	    if (id) {
+	      if (_inMoving && !_isProcessed) {
+	        ele = element.querySelector(id);
+	        if (ele) {
+	          _updatePosition(ele);
+	        }
+	      }
+	      _updateLighter(_target, true);
+	    }
+	    _isProcessed = true;
+	    _inMoving = false;
+	    _target = null;
+	    qfList.className = qfList.className.replace(instance.props.clickFeedBackCls, '');
+	  }
+	
+	  new EventManager(qfList).addHandler({
+	    start: _start,
+	    move: _move,
+	    end: _end
+	  });
+	}
 
 /***/ },
 /* 167 */
+/***/ function(module, exports) {
+
+	/* eslint-disable no-unused-vars */
+	'use strict';
+	var hasOwnProperty = Object.prototype.hasOwnProperty;
+	var propIsEnumerable = Object.prototype.propertyIsEnumerable;
+	
+	function toObject(val) {
+		if (val === null || val === undefined) {
+			throw new TypeError('Object.assign cannot be called with null or undefined');
+		}
+	
+		return Object(val);
+	}
+	
+	module.exports = Object.assign || function (target, source) {
+		var from;
+		var to = toObject(target);
+		var symbols;
+	
+		for (var s = 1; s < arguments.length; s++) {
+			from = Object(arguments[s]);
+	
+			for (var key in from) {
+				if (hasOwnProperty.call(from, key)) {
+					to[key] = from[key];
+				}
+			}
+	
+			if (Object.getOwnPropertySymbols) {
+				symbols = Object.getOwnPropertySymbols(from);
+				for (var i = 0; i < symbols.length; i++) {
+					if (propIsEnumerable.call(from, symbols[i])) {
+						to[symbols[i]] = from[symbols[i]];
+					}
+				}
+			}
+		}
+	
+		return to;
+	};
+
+
+/***/ },
+/* 168 */
 /***/ function(module, exports) {
 
 	/*eslint-disable no-alert, no-console*/

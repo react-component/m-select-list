@@ -78,7 +78,7 @@
 }
 .rmc-ls-quick-search-bar {
   position: absolute;
-  top: 15%;
+  top: 50%;
   right: 0;
   z-index: 1999;
   margin-top: -120px;
@@ -88,7 +88,7 @@
   font-size: 12px;
   display: block;
 }
-.rmc-ls-quick-search-bar.rmc-lson {
+.rmc-ls-quick-search-bar.rmc-ls-on {
   background-color: rgba(128, 128, 128, 0.1);
 }
 .rmc-ls-quick-search-bar li > a {

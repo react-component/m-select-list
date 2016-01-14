@@ -276,14 +276,24 @@ Monokai Sublime style. Derived from Monokai by noformnocontent http://nn.mit-lic
 <span class="hljs-keyword">const</span> Demo = React.createClass({
   getInitialState() {
     <span class="hljs-keyword">return</span> {
-      value: province[<span class="hljs-number">0</span>],
+      selectedItem: province[<span class="hljs-number">0</span>],
+      value: <span class="hljs-string">''</span>,
     };
   },
   onChange(value) {
     <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'onChange'</span>, value);
   },
+  onSelect(selectedItem) {
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'onSelect'</span>, selectedItem);
+  },
   render() {
-    <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">MSelectList</span> <span class="hljs-attribute">className</span>=<span class="hljs-value">"wrapper"</span> <span class="hljs-attribute">data</span>=<span class="hljs-value">{province}</span> <span class="hljs-attribute">value</span>=<span class="hljs-value">{this.state.value}</span> <span class="hljs-attribute">onChange</span>=<span class="hljs-value">{this.onChange}</span> /&gt;</span>;</span>
+    <span class="hljs-keyword">return</span> (<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">MSelectList</span> <span class="hljs-attribute">className</span>=<span class="hljs-value">"wrapper"</span>
+      <span class="hljs-attribute">data</span>=<span class="hljs-value">{province}</span>
+      <span class="hljs-attribute">selectedItem</span>=<span class="hljs-value">{this.state.selectedItem}</span>
+      <span class="hljs-attribute">defaultValue</span>=<span class="hljs-value">"b"</span>
+      <span class="hljs-attribute">onChange</span>=<span class="hljs-value">{this.onChange}</span>
+      <span class="hljs-attribute">onSelect</span>=<span class="hljs-value">{this.onSelect}</span>
+       /&gt;</span>)</span>;
   },
 });
 
