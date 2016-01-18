@@ -39,23 +39,44 @@ webpackJsonp([0,1],[
 	  getInitialState: function getInitialState() {
 	    return {
 	      selectedItem: _data.province[0],
-	      value: ''
+	      value: 'b'
 	    };
 	  },
 	  onChange: function onChange(value) {
 	    console.log('onChange', value);
+	    this.setState({
+	      value: value
+	    });
 	  },
 	  onSelect: function onSelect(selectedItem) {
 	    console.log('onSelect', selectedItem);
+	    this.setState({
+	      selectedItem: selectedItem
+	    });
 	  },
 	  render: function render() {
-	    return _react2['default'].createElement(_rmcSelectList2['default'], { className: 'wrapper',
-	      data: _data.province,
-	      selectedItem: this.state.selectedItem,
-	      defaultValue: 'b',
-	      onChange: this.onChange,
-	      onSelect: this.onSelect
-	    });
+	    return _react2['default'].createElement(
+	      'div',
+	      null,
+	      _react2['default'].createElement(
+	        'h3',
+	        null,
+	        'simple demo'
+	      ),
+	      _react2['default'].createElement(
+	        'p',
+	        { style: { marginTop: '30' } },
+	        '选择的城市是：',
+	        this.state.selectedItem.value
+	      ),
+	      _react2['default'].createElement(_rmcSelectList2['default'], { className: 'wrapper',
+	        data: _data.province,
+	        selectedItem: this.state.selectedItem,
+	        defaultValue: this.state.value,
+	        onChange: this.onChange,
+	        onSelect: this.onSelect
+	      })
+	    );
 	  }
 	});
 	
@@ -301,7 +322,7 @@ webpackJsonp([0,1],[
 	
 	    var data = this._initData([].concat(_toConsumableArray(this.props.data)));
 	    this.data = data;
-	    var current = this.props.selectedItem;
+	    var current = this.state.selectedItem;
 	    var searchKey = '_J_qf_key_DQ';
 	    var qfHtml = [];
 	    var normalHtml = [];
