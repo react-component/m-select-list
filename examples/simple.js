@@ -172,7 +172,6 @@ webpackJsonp([0,1],[
 	  getDefaultProps: function getDefaultProps() {
 	    return {
 	      prefixCls: 'rmc-ls',
-	      clickFeedBackCls: 'rmc-ls-on',
 	      placeholder: '搜索',
 	      dataKey: 'key',
 	      dataValue: 'value',
@@ -184,6 +183,7 @@ webpackJsonp([0,1],[
 	  },
 	  getInitialState: function getInitialState() {
 	    return {
+	      clickFeedBack: false,
 	      showSearch: false,
 	      showLighter: false,
 	      showQfList: this.props.showQfList,
@@ -358,7 +358,7 @@ webpackJsonp([0,1],[
 	      value: this.state.value,
 	      onChange: this.onChange
 	    };
-	    var qfListCls = (_qfListCls = {}, _defineProperty(_qfListCls, prefixCls + '-quick-search-bar', true), _defineProperty(_qfListCls, prefixCls + '-hide', !this.state.showQfList), _qfListCls);
+	    var qfListCls = (_qfListCls = {}, _defineProperty(_qfListCls, prefixCls + '-quick-search-bar', true), _defineProperty(_qfListCls, prefixCls + '-hide', !this.state.showQfList), _defineProperty(_qfListCls, prefixCls + '-on', this.state.clickFeedBack), _qfListCls);
 	    var normalViewCls = (_normalViewCls = {}, _defineProperty(_normalViewCls, prefixCls + '-content', true), _defineProperty(_normalViewCls, prefixCls + '-hide', this.state.showSearch && !!this.state.value.length), _normalViewCls);
 	    var searchViewCls = (_searchViewCls = {}, _defineProperty(_searchViewCls, prefixCls + '-content', true), _defineProperty(_searchViewCls, prefixCls + '-hide', !this.state.showSearch && this.state.value.length), _searchViewCls);
 	    var lighterCls = (_lighterCls = {}, _defineProperty(_lighterCls, prefixCls + '-lighter', true), _defineProperty(_lighterCls, prefixCls + '-hide', !this.state.showLighter), _lighterCls);
@@ -373,7 +373,7 @@ webpackJsonp([0,1],[
 	          null,
 	          _react2['default'].createElement(
 	            'a',
-	            { 'data-qf-target': '.ls-search' },
+	            { 'data-qf-target': '.' + prefixCls + '-search' },
 	            _react2['default'].createElement('i', { className: prefixCls + '-icon-search' })
 	          )
 	        ),
@@ -20563,7 +20563,9 @@ webpackJsonp([0,1],[
 	      _updateLighter(_target);
 	    }
 	    e.preventDefault();
-	    qfList.className += ' ' + instance.props.clickFeedBackCls;
+	    instance.setState({
+	      clickFeedBack: true
+	    });
 	  }
 	  function _move(e) {
 	    var ele = undefined;
@@ -20603,7 +20605,9 @@ webpackJsonp([0,1],[
 	    _isProcessed = true;
 	    _inMoving = false;
 	    _target = null;
-	    qfList.className = qfList.className.replace(instance.props.clickFeedBackCls, '');
+	    instance.setState({
+	      clickFeedBack: false
+	    });
 	  }
 	
 	  new EventManager(qfList).addHandler({

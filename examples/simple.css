@@ -98,7 +98,7 @@
   height: 18px;
   line-height: 18px;
 }
-.rmc-ls-quick-search-bar li > .rmc-ls-quick-search-over {
+.rmc-ls-quick-search-bar li > .quick-search-over {
   background-color: rgba(128, 128, 128, 0.2);
 }
 .rmc-ls-quick-search-bar li > a > i {
