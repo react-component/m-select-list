@@ -140,7 +140,7 @@ const MSelectList = React.createClass({
   renderData() {
     const data = this._initData([...this.props.data]);
     this.data = data;
-    const current = this.props.selectedItem;
+    const current = this.state.selectedItem;
     let searchKey = '_J_qf_key_DQ';
     const qfHtml = [];
     const normalHtml = [];

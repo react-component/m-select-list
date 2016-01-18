@@ -11,23 +11,33 @@ const Demo = React.createClass({
   getInitialState() {
     return {
       selectedItem: province[0],
-      value: '',
+      value: 'b',
     };
   },
   onChange(value) {
     console.log('onChange', value);
+    this.setState({
+      value,
+    });
   },
   onSelect(selectedItem) {
     console.log('onSelect', selectedItem);
+    this.setState({
+      selectedItem,
+    });
   },
   render() {
-    return (<MSelectList className="wrapper"
-      data={province}
-      selectedItem={this.state.selectedItem}
-      defaultValue="b"
-      onChange={this.onChange}
-      onSelect={this.onSelect}
-       />);
+    return (<div>
+      <h3>simple demo</h3>
+      <p style={{marginTop: '30'}}>选择的城市是：{this.state.selectedItem.value}</p>
+      <MSelectList className="wrapper"
+        data={province}
+        selectedItem={this.state.selectedItem}
+        defaultValue={this.state.value}
+        onChange={this.onChange}
+        onSelect={this.onSelect}
+       />
+     </div>);
   },
 });
 
