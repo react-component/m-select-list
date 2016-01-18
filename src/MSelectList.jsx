@@ -28,7 +28,6 @@ const MSelectList = React.createClass({
   getDefaultProps() {
     return {
       prefixCls: 'rmc-ls',
-      clickFeedBackCls: 'rmc-ls-on',
       placeholder: '搜索',
       dataKey: 'key',
       dataValue: 'value',
@@ -40,6 +39,7 @@ const MSelectList = React.createClass({
   },
   getInitialState() {
     return {
+      clickFeedBack: false,
       showSearch: false,
       showLighter: false,
       showQfList: this.props.showQfList,
@@ -179,6 +179,7 @@ const MSelectList = React.createClass({
     const qfListCls = {
       [`${prefixCls}-quick-search-bar`]: true,
       [`${prefixCls}-hide`]: !this.state.showQfList,
+      [`${prefixCls}-on`]: this.state.clickFeedBack,
     };
     const normalViewCls = {
       [`${prefixCls}-content`]: true,
@@ -194,7 +195,7 @@ const MSelectList = React.createClass({
     };
     return (<div className={classNames(className, `${prefixCls}-playground`)}>
       <ul className={classNames(qfListCls)} ref="qfList">
-          <li><a data-qf-target=".ls-search"><i className={`${prefixCls}-icon-search`}></i></a></li>
+          <li><a data-qf-target={`.${prefixCls}-search`}><i className={`${prefixCls}-icon-search`}></i></a></li>
           {qfHtml}
       </ul>
       <div className={`${prefixCls}-body`} ref="viewport">

@@ -467,7 +467,9 @@ export function handleQuickBar(instance, element) {
       _updateLighter(_target);
     }
     e.preventDefault();
-    qfList.className += ' ' + instance.props.clickFeedBackCls;
+    instance.setState({
+      clickFeedBack: true,
+    });
   }
   function _move(e) {
     let ele;
@@ -507,7 +509,9 @@ export function handleQuickBar(instance, element) {
     _isProcessed = true;
     _inMoving = false;
     _target = null;
-    qfList.className = qfList.className.replace(instance.props.clickFeedBackCls, '');
+    instance.setState({
+      clickFeedBack: false,
+    });
   }
 
   new EventManager(qfList).addHandler({
