@@ -211,8 +211,8 @@ const MSelectList = React.createClass({
                     style={{visibility: this.state.showSearch ? 'visible' : 'hidden'}}></i></div>
               </div>
           </div>
-          <div className={classNames(normalViewCls)}>{normalHtml}</div>
-          <div className={classNames(searchViewCls)}>
+          <div className={classNames(normalViewCls)} ref="normalView">{normalHtml}</div>
+          <div className={classNames(searchViewCls)} ref="searchView">
             <ul className={`${prefixCls}-item`}>
               {this.renderCommonItem(this.getMatchData(this.state.value))}
             </ul>
