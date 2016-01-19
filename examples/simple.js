@@ -221,7 +221,8 @@ webpackJsonp([0,1],[
 	
 	    var eventManager = new _util.EventManager(viewport);
 	    (0, _util.handleTapping)(eventManager, this);
-	    (0, _util.handleQuickBar)(this, _reactDom2['default'].findDOMNode(this));
+	    this.qfListEvent = (0, _util.handleQuickBar)(this, _reactDom2['default'].findDOMNode(this));
+	    this.viewportEvent = eventManager;
 	  },
 	  componentWillReceiveProps: function componentWillReceiveProps(nextProps) {
 	    if ('value' in nextProps) {
@@ -236,9 +237,8 @@ webpackJsonp([0,1],[
 	    }
 	  },
 	  componentWillUnmount: function componentWillUnmount() {
-	    var viewport = this.refs.viewport;
-	
-	    console.log(viewport);
+	    this.qfListEvent.endEvent();
+	    this.viewportEvent.endEvent();
 	  },
 	  onQfSelect: function onQfSelect(selectedItem) {
 	    this.props.onQfSelect(selectedItem);
@@ -427,12 +427,12 @@ webpackJsonp([0,1],[
 	          ),
 	          _react2['default'].createElement(
 	            'div',
-	            { className: (0, _classnames2['default'])(normalViewCls) },
+	            { className: (0, _classnames2['default'])(normalViewCls), ref: 'normalView' },
 	            normalHtml
 	          ),
 	          _react2['default'].createElement(
 	            'div',
-	            { className: (0, _classnames2['default'])(searchViewCls) },
+	            { className: (0, _classnames2['default'])(searchViewCls), ref: 'searchView' },
 	            _react2['default'].createElement(
 	              'ul',
 	              { className: prefixCls + '-item' },
@@ -20631,11 +20631,14 @@ webpackJsonp([0,1],[
 	    });
 	  }
 	
-	  new EventManager(qfList).addHandler({
+	  var eventManager = new EventManager(qfList);
+	  eventManager.addHandler({
 	    start: _start,
 	    move: _move,
 	    end: _end
 	  });
+	
+	  return eventManager;
 	}
 
 /***/ },
