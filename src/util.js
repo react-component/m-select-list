@@ -514,9 +514,12 @@ export function handleQuickBar(instance, element) {
     });
   }
 
-  new EventManager(qfList).addHandler({
+  const eventManager = new EventManager(qfList);
+  eventManager.addHandler({
     start: _start,
     move: _move,
     end: _end,
   });
+
+  return eventManager;
 }

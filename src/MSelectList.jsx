@@ -53,7 +53,8 @@ const MSelectList = React.createClass({
 
     const eventManager = new EventManager(viewport);
     handleTapping(eventManager, this);
-    handleQuickBar(this, ReactDOM.findDOMNode(this));
+    this.qfListEvent = handleQuickBar(this, ReactDOM.findDOMNode(this));
+    this.viewportEvent = eventManager;
   },
   componentWillReceiveProps(nextProps) {
     if ('value' in nextProps) {
@@ -68,8 +69,8 @@ const MSelectList = React.createClass({
     }
   },
   componentWillUnmount() {
-    const {viewport} = this.refs;
-    console.log(viewport);
+    this.qfListEvent.endEvent();
+    this.viewportEvent.endEvent();
   },
   onQfSelect(selectedItem) {
     this.props.onQfSelect(selectedItem);
