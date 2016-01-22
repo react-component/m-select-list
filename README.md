@@ -60,6 +60,7 @@ see example
 |className | additional css class of root dom node | String | '' |
 |prefixCls | prefix class | String | 'rmc-ls' |
 |placeholder | input placeholder | String | '搜索' |
+|locale | the locale of area | Object | import from 'rmc-select-list/lib/locale/zh_CN' |
 |data | The data of cascade | array  |  |
 |value | input value | String  | '' |
 |defaultValue | input default value | String  | '' |

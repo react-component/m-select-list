@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 // import assign from 'object-assign';
 import classNames from 'classnames';
 import {EventManager, handleTapping, handleQuickBar} from './util';
+import defaultLocale from './locale/zh_CN';
 
 function noop() {
 }
@@ -13,6 +14,7 @@ const MSelectList = React.createClass({
     className: PropTypes.string,
     prefixCls: PropTypes.string,
     placeholder: PropTypes.string,
+    locale: PropTypes.object,
     dataKey: PropTypes.string,
     dataValue: PropTypes.string,
     showQfList: PropTypes.bool,
@@ -29,6 +31,7 @@ const MSelectList = React.createClass({
     return {
       prefixCls: 'rmc-ls',
       placeholder: '搜索',
+      locale: defaultLocale,
       dataKey: 'key',
       dataValue: 'value',
       showQfList: true,
@@ -139,6 +142,7 @@ const MSelectList = React.createClass({
     });
   },
   renderData() {
+    const locale = this.props.locale;
     const data = this._initData([...this.props.data]);
     this.data = data;
     const current = this.state.selectedItem;
@@ -159,8 +163,8 @@ const MSelectList = React.createClass({
       ]);
     };
     if (current && current[this.props.dataKey] && current[this.props.dataValue]) {
-      qfHtml.push(getQfItem(searchKey, '当前'));
-      normalHtml.push(getSection(searchKey, '当前地区', [current]));
+      qfHtml.push(getQfItem(searchKey, locale.currentQf));
+      normalHtml.push(getSection(searchKey, locale.currentRegion, [current]));
     }
     Object.keys(data).forEach(key => {
       const QF = data[key][0].QF;
