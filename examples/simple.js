@@ -31,7 +31,11 @@ webpackJsonp([0,1],[
 	
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 	
-	var _data = __webpack_require__(168);
+	var _data = __webpack_require__(169);
+	
+	var _rmcSelectListSrcLocaleEn_US = __webpack_require__(170);
+	
+	var _rmcSelectListSrcLocaleEn_US2 = _interopRequireDefault(_rmcSelectListSrcLocaleEn_US);
 	
 	var Demo = _react2['default'].createClass({
 	  displayName: 'Demo',
@@ -71,6 +75,7 @@ webpackJsonp([0,1],[
 	      ),
 	      _react2['default'].createElement(_rmcSelectList2['default'], { className: 'wrapper',
 	        data: _data.province,
+	        locale: _rmcSelectListSrcLocaleEn_US2['default'],
 	        selectedItem: this.state.selectedItem,
 	        defaultValue: this.state.value,
 	        onChange: this.onChange,
@@ -168,6 +173,10 @@ webpackJsonp([0,1],[
 	
 	var _util = __webpack_require__(166);
 	
+	var _localeZh_CN = __webpack_require__(168);
+	
+	var _localeZh_CN2 = _interopRequireDefault(_localeZh_CN);
+	
 	function noop() {}
 	
 	var MSelectList = _react2['default'].createClass({
@@ -178,6 +187,7 @@ webpackJsonp([0,1],[
 	    className: _react.PropTypes.string,
 	    prefixCls: _react.PropTypes.string,
 	    placeholder: _react.PropTypes.string,
+	    locale: _react.PropTypes.object,
 	    dataKey: _react.PropTypes.string,
 	    dataValue: _react.PropTypes.string,
 	    showQfList: _react.PropTypes.bool,
@@ -194,6 +204,7 @@ webpackJsonp([0,1],[
 	    return {
 	      prefixCls: 'rmc-ls',
 	      placeholder: '搜索',
+	      locale: _localeZh_CN2['default'],
 	      dataKey: 'key',
 	      dataValue: 'value',
 	      showQfList: true,
@@ -320,6 +331,7 @@ webpackJsonp([0,1],[
 	  renderData: function renderData() {
 	    var _this4 = this;
 	
+	    var locale = this.props.locale;
 	    var data = this._initData([].concat(_toConsumableArray(this.props.data)));
 	    this.data = data;
 	    var current = this.state.selectedItem;
@@ -351,8 +363,8 @@ webpackJsonp([0,1],[
 	      )];
 	    };
 	    if (current && current[this.props.dataKey] && current[this.props.dataValue]) {
-	      qfHtml.push(getQfItem(searchKey, '当前'));
-	      normalHtml.push(getSection(searchKey, '当前地区', [current]));
+	      qfHtml.push(getQfItem(searchKey, locale.currentQf));
+	      normalHtml.push(getSection(searchKey, locale.currentRegion, [current]));
 	    }
 	    Object.keys(data).forEach(function (key) {
 	      var QF = data[key][0].QF;
@@ -20690,6 +20702,21 @@ webpackJsonp([0,1],[
 /* 168 */
 /***/ function(module, exports) {
 
+	'use strict';
+	
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+	exports['default'] = {
+	  currentQf: '当前',
+	  currentRegion: '当前地区'
+	};
+	module.exports = exports['default'];
+
+/***/ },
+/* 169 */
+/***/ function(module, exports) {
+
 	/*eslint-disable no-alert, no-console*/
 	
 	'use strict';
@@ -20824,6 +20851,21 @@ webpackJsonp([0,1],[
 	}];
 	
 	exports.province = province;
+
+/***/ },
+/* 170 */
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+	exports['default'] = {
+	  currentQf: 'current',
+	  currentRegion: 'current region'
+	};
+	module.exports = exports['default'];
 
 /***/ }
 ]);
