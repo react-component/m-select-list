@@ -348,6 +348,7 @@ export function handleTapping(eventManager, instance) {
     let isHit = false;
 
     if (id) {
+      // todo. setTimeout is necessary ?
       setTimeout(function() {
         instance.onSelect(instance.cache[`${id}_${target.getAttribute('data-spell')}`]);
       }, 0);
