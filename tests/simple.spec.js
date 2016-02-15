@@ -5,7 +5,7 @@ const TestUtils = require('react-addons-test-utils');
 const Simulate = TestUtils.Simulate;
 const $ = require('jquery');
 const MSelectList = require('../');
-import '../assets/demo.less';
+import '../examples/demo.less';
 import {province} from '../examples/data';
 
 describe('simple', () => {

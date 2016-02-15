@@ -1,7 +1,7 @@
 // use jsx to render html, do not modify simple.html
 
 import 'rmc-select-list/assets/index.less';
-import 'rmc-select-list/assets/demo.less';
+import './demo.less';
 import MSelectList from 'rmc-select-list';
 import React from 'react';
 import ReactDOM from 'react-dom';
