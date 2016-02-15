@@ -41,7 +41,7 @@ npm start
 
 http://localhost:8000/examples/
 
-online example: http://react-component.github.io/m-select-list/examples/
+online example: http://react-component.github.io/m-select-list/
 
 ## install
 
@@ -71,11 +71,18 @@ see example
 
 ## Test Case
 
-http://localhost:8000/tests/runner.html?coverage
+```
+npm test
+npm run chrome-test
+```
 
 ## Coverage
 
-http://localhost:8000/node_modules/rc-server/node_modules/node-jscover/lib/front-end/jscoverage.html?w=http://localhost:8000/tests/runner.html?coverage
+```
+npm run coverage
+```
+
+open coverage/ dir
 
 ## License
 

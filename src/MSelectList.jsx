@@ -1,8 +1,8 @@
-import React, {PropTypes} from 'react';
+import React, { PropTypes } from 'react';
 import ReactDOM from 'react-dom';
 // import assign from 'object-assign';
 import classNames from 'classnames';
-import {EventManager, handleTapping, handleQuickBar} from './util';
+import { EventManager, handleTapping, handleQuickBar } from './util';
 import defaultLocale from './locale/zh_CN';
 
 function noop() {
@@ -51,8 +51,8 @@ const MSelectList = React.createClass({
     };
   },
   componentDidMount() {
-    const {viewport, qfList} = this.refs;
-    qfList.style['margin-top'] = -(qfList.offsetHeight / 2 + 20) + 'px';
+    const { viewport, qfList } = this.refs;
+    qfList.style['margin-top'] = `${-(qfList.offsetHeight / 2 + 20)}px`;
 
     const eventManager = new EventManager(viewport);
     handleTapping(eventManager, this);
@@ -119,26 +119,30 @@ const MSelectList = React.createClass({
     return found;
   },
   _initData(data) {
-    data.sort(function(a, b) {
+    data.sort((a, b) => {
       return a.spell.localeCompare(b.spell);
     });
     const dataKey = this.props.dataKey;
     const transData = {};
     const cache = {};
     data.forEach((item) => {
+      /* eslint no-param-reassign:0 */
       item.QF = item.QF || item.spell[0].toUpperCase();
       item.abbr = item.abbr || item.spell.replace(/[a-z]+/g, '');
       transData[item.QF] = transData[item.QF] || [];
-      transData[item.QF].push(cache[item[dataKey] + '_' + item.spell] = item);
+      cache[`${item[dataKey]}_${item.spell}`] = item;
+      transData[item.QF].push(item);
     });
     this.cache = cache;
     return transData;
   },
   renderCommonItem(data) {
     return data.map((item, index) => {
-      return (<li key={index}><a
-        data-key={item[this.props.dataKey]}
-        data-spell={item.spell}>{item[this.props.dataValue]}</a></li>);
+      return (<li key={index}>
+        <a
+          data-key={item[this.props.dataKey]}
+          data-spell={item.spell}
+        >{item[this.props.dataValue]}</a></li>);
     });
   },
   renderData() {
@@ -152,7 +156,9 @@ const MSelectList = React.createClass({
     let keyIndex = 1;
     const getQfItem = (sk, QF) => {
       keyIndex++;
-      return <li key={keyIndex}><a onClick={this.onQfSelect} data-qf-target={'.' + sk}>{QF}</a></li>;
+      return (<li key={keyIndex}>
+        <a onClick={this.onQfSelect} data-qf-target={`.${sk}`}>{QF}</a>
+      </li>);
     };
     const getSection = (sk, QF, d) => {
       return ([
@@ -168,15 +174,18 @@ const MSelectList = React.createClass({
     }
     Object.keys(data).forEach(key => {
       const QF = data[key][0].QF;
-      searchKey = '_J_qf_key_' + QF;
+      searchKey = `_J_qf_key_${QF}`;
       qfHtml.push(getQfItem(searchKey, QF));
       normalHtml.push(getSection(searchKey, QF, data[key]));
     });
-    return {qfHtml, normalHtml};
+    return {
+      qfHtml,
+      normalHtml,
+    };
   },
   render() {
-    const {className, prefixCls, placeholder} = this.props;
-    const {qfHtml, normalHtml} = this.renderData();
+    const { className, prefixCls, placeholder } = this.props;
+    const { qfHtml, normalHtml } = this.renderData();
     const inputProps = {
       value: this.state.value,
       onChange: this.onChange,
@@ -200,21 +209,34 @@ const MSelectList = React.createClass({
     };
     return (<div className={classNames(className, `${prefixCls}-playground`)}>
       <ul className={classNames(qfListCls)} ref="qfList">
-          <li><a data-qf-target={`.${prefixCls}-search`}><i className={`${prefixCls}-icon-search`}></i></a></li>
-          {qfHtml}
+        <li>
+          <a data-qf-target={`.${prefixCls}-search`}>
+            <i className={`${prefixCls}-icon-search`}/>
+          </a>
+        </li>
+        {qfHtml}
       </ul>
       <div className={`${prefixCls}-body`} ref="viewport">
         <div className={`${prefixCls}-scroller`} ref="container">
           <div className={classNames(`${prefixCls}-search`, `${prefixCls}-input-autoclear`)}>
-              <div className={`${prefixCls}-search-input`}>
-                  <input className={`${prefixCls}-search-value`}
-                    type="text" placeholder={placeholder}
-                    data-cid="sinput" ref="sinput" {...inputProps} />
-                  <div className={`${prefixCls}-search-clear`}
-                    data-cid="clear"
-                    style={{width: 'auto'}}><i className={`${prefixCls}-icon-clear`}
-                    style={{visibility: this.state.showSearch ? 'visible' : 'hidden'}}></i></div>
+            <div className={`${prefixCls}-search-input`}>
+              <input
+                className={`${prefixCls}-search-value`}
+                type="text"
+                placeholder={placeholder}
+                data-cid="sinput" ref="sinput" {...inputProps}
+              />
+              <div
+                className={`${prefixCls}-search-clear`}
+                data-cid="clear"
+                style={{ width: 'auto' }}
+              >
+                <i
+                  className={`${prefixCls}-icon-clear`}
+                  style={{ visibility: this.state.showSearch ? 'visible' : 'hidden' }}
+                />
               </div>
+            </div>
           </div>
           <div className={classNames(normalViewCls)} ref="normalView">{normalHtml}</div>
           <div className={classNames(searchViewCls)} ref="searchView">

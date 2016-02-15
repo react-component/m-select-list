@@ -5,7 +5,7 @@ import 'rmc-select-list/assets/demo.less';
 import MSelectList from 'rmc-select-list';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {province} from './data';
+import { province } from './data';
 import enUS from 'rmc-select-list/src/locale/en_US';
 
 const Demo = React.createClass({
@@ -30,15 +30,16 @@ const Demo = React.createClass({
   render() {
     return (<div>
       <h3>simple demo</h3>
-      <p style={{marginTop: '30'}}>选择的城市是：{this.state.selectedItem.value}</p>
-      <MSelectList className="wrapper"
+      <p style={{ marginTop: '30' }}>选择的城市是：{this.state.selectedItem.value}</p>
+      <MSelectList
+        className="wrapper"
         data={province}
         locale={enUS}
         selectedItem={this.state.selectedItem}
         defaultValue={this.state.value}
         onChange={this.onChange}
         onSelect={this.onSelect}
-       />
+      />
      </div>);
   },
 });

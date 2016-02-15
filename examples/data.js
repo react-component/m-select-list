@@ -1,4 +1,4 @@
-/*eslint-disable no-alert, no-console*/
+/* eslint comma-dangle:0 */
 
 const province = [{
   key: '11',
@@ -126,4 +126,4 @@ const province = [{
   spell: 'XinJiangWeiWuErZiZhiQu'
 }];
 
-export {province}
+export { province };
