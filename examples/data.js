@@ -1,128 +1,128 @@
 /* eslint comma-dangle:0 */
 
 const province = [{
-  key: '11',
-  value: '北京市',
+  value: '11',
+  label: '北京市',
   spell: 'BeiJingShi'
 }, {
-  key: '12',
-  value: '天津市',
+  value: '12',
+  label: '天津市',
   spell: 'TianJinShi'
 }, {
-  key: '13',
-  value: '河北省',
+  value: '13',
+  label: '河北省',
   spell: 'HeBeiSheng'
 }, {
-  key: '14',
-  value: '山西省',
+  value: '14',
+  label: '山西省',
   spell: 'ShanXiSheng'
 }, {
-  key: '15',
-  value: '内蒙古自治区',
+  value: '15',
+  label: '内蒙古自治区',
   spell: 'NeiMengGuZiZhiQu'
 }, {
-  key: '21',
-  value: '辽宁省',
+  value: '21',
+  label: '辽宁省',
   spell: 'LiaoNingSheng'
 }, {
-  key: '22',
-  value: '吉林省',
+  value: '22',
+  label: '吉林省',
   spell: 'JiLinSheng'
 }, {
-  key: '23',
-  value: '黑龙江省',
+  value: '23',
+  label: '黑龙江省',
   spell: 'HeiLongJiangSheng'
 }, {
-  key: '31',
-  value: '上海市',
+  value: '31',
+  label: '上海市',
   spell: 'ShangHaiShi'
 }, {
-  key: '32',
-  value: '江苏省',
+  value: '32',
+  label: '江苏省',
   spell: 'JiangSuSheng'
 }, {
-  key: '33',
-  value: '浙江省',
+  value: '33',
+  label: '浙江省',
   spell: 'ZheJiangSheng'
 }, {
-  key: '34',
-  value: '安徽省',
+  value: '34',
+  label: '安徽省',
   spell: 'AnHuiSheng'
 }, {
-  key: '35',
-  value: '福建省',
+  value: '35',
+  label: '福建省',
   spell: 'FuJianSheng'
 }, {
-  key: '36',
-  value: '江西省',
+  value: '36',
+  label: '江西省',
   spell: 'JiangXiSheng'
 }, {
-  key: '37',
-  value: '山东省',
+  value: '37',
+  label: '山东省',
   spell: 'ShanDongSheng'
 }, {
-  key: '41',
-  value: '河南省',
+  value: '41',
+  label: '河南省',
   spell: 'HeNanSheng'
 }, {
-  key: '42',
-  value: '湖北省',
+  value: '42',
+  label: '湖北省',
   spell: 'HuBeiSheng'
 }, {
-  key: '43',
-  value: '湖南省',
+  value: '43',
+  label: '湖南省',
   spell: 'HuNanSheng'
 }, {
-  key: '44',
-  value: '广东省',
+  value: '44',
+  label: '广东省',
   spell: 'GuangDongSheng'
 }, {
-  key: '45',
-  value: '广西壮族自治区',
+  value: '45',
+  label: '广西壮族自治区',
   spell: 'GuangXiZhuangZuZiZhiQu'
 }, {
-  key: '46',
-  value: '海南省',
+  value: '46',
+  label: '海南省',
   spell: 'HaiNanSheng'
 }, {
-  key: '50',
-  value: '重庆市',
+  value: '50',
+  label: '重庆市',
   spell: 'ChongQingShi'
 }, {
-  key: '51',
-  value: '四川省',
+  value: '51',
+  label: '四川省',
   spell: 'SiChuanSheng'
 }, {
-  key: '52',
-  value: '贵州省',
+  value: '52',
+  label: '贵州省',
   spell: 'GuiZhouSheng'
 }, {
-  key: '53',
-  value: '云南省',
+  value: '53',
+  label: '云南省',
   spell: 'YunNanSheng'
 }, {
-  key: '54',
-  value: '西藏自治区',
+  value: '54',
+  label: '西藏自治区',
   spell: 'XiCangZiZhiQu'
 }, {
-  key: '61',
-  value: '陕西省',
+  value: '61',
+  label: '陕西省',
   spell: 'ShanXiSheng'
 }, {
-  key: '62',
-  value: '甘肃省',
+  value: '62',
+  label: '甘肃省',
   spell: 'GanSuSheng'
 }, {
-  key: '63',
-  value: '青海省',
+  value: '63',
+  label: '青海省',
   spell: 'QingHaiSheng'
 }, {
-  key: '64',
-  value: '宁夏回族自治区',
+  value: '64',
+  label: '宁夏回族自治区',
   spell: 'NingXiaHuiZuZiZhiQu'
 }, {
-  key: '65',
-  value: '新疆维吾尔自治区',
+  value: '65',
+  label: '新疆维吾尔自治区',
   spell: 'XinJiangWeiWuErZiZhiQu'
 }];
 

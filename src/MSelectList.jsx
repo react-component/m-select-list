@@ -15,15 +15,15 @@ const MSelectList = React.createClass({
     prefixCls: PropTypes.string,
     placeholder: PropTypes.string,
     locale: PropTypes.object,
-    dataKey: PropTypes.string,
-    dataValue: PropTypes.string,
+    valueProp: PropTypes.string,
+    labelProp: PropTypes.string,
     showQuickSearchBar: PropTypes.bool,
     showInput: PropTypes.bool,
     data: PropTypes.array,
     inputValue: PropTypes.string,
     defaultInputValue: PropTypes.string,
-    value: PropTypes.object,
-    defaultValue: PropTypes.object,
+    value: PropTypes.string,
+    defaultValue: PropTypes.string,
     onInputChange: PropTypes.func,
     onChange: PropTypes.func,
     onQfSelect: PropTypes.func,
@@ -33,8 +33,8 @@ const MSelectList = React.createClass({
       prefixCls: 'rmc-select-list',
       placeholder: '搜索',
       locale: defaultLocale,
-      dataKey: 'key',
-      dataValue: 'value',
+      valueProp: 'value',
+      labelProp: 'label',
       showQuickSearchBar: true,
       showInput: false,
       onInputChange: noop,
@@ -81,7 +81,7 @@ const MSelectList = React.createClass({
     this.props.onQfSelect(selectedItem);
   },
   onChange(selectedItem) {
-    this.props.onChange(selectedItem);
+    this.props.onChange(selectedItem[this.props.valueProp], selectedItem);
   },
   onInputChange(e) {
     this.setState({
@@ -108,10 +108,10 @@ const MSelectList = React.createClass({
     const data = this.data;
     const found = [];
     const val = v.trim().toLowerCase();
-    Object.keys(data).forEach(key => {
-      data[key].forEach(d => {
-        if (d[this.props.dataValue].indexOf(val) > -1 ||
-          d[this.props.dataKey].indexOf(val) > -1 ||
+    Object.keys(data).forEach(item => {
+      data[item].forEach(d => {
+        if (d[this.props.labelProp].indexOf(val) > -1 ||
+          d[this.props.valueProp].indexOf(val) > -1 ||
           d.spell.toLowerCase().indexOf(val) > -1 ||
           d.abbr.toLowerCase().indexOf(val) > -1) {
           found.push(d);
@@ -124,7 +124,6 @@ const MSelectList = React.createClass({
     data.sort((a, b) => {
       return a.spell.localeCompare(b.spell);
     });
-    const dataKey = this.props.dataKey;
     const transData = {};
     const cache = {};
     data.forEach((item) => {
@@ -132,7 +131,7 @@ const MSelectList = React.createClass({
       item.QF = item.QF || item.spell[0].toUpperCase();
       item.abbr = item.abbr || item.spell.replace(/[a-z]+/g, '');
       transData[item.QF] = transData[item.QF] || [];
-      cache[`${item[dataKey]}_${item.spell}`] = item;
+      cache[`${item[this.props.valueProp]}_${item.spell}`] = item;
       transData[item.QF].push(item);
     });
     this.cache = cache;
@@ -142,16 +141,15 @@ const MSelectList = React.createClass({
     return data.map((item, index) => {
       return (<li key={index}>
         <a
-          data-key={item[this.props.dataKey]}
+          data-key={item[this.props.valueProp]}
           data-spell={item.spell}
-        >{item[this.props.dataValue]}</a></li>);
+        >{item[this.props.labelProp]}</a></li>);
     });
   },
   renderData() {
     const locale = this.props.locale;
     const data = this._initData([...this.props.data]);
     this.data = data;
-    const current = this.state.value;
     let searchKey = '_J_qf_key_DQ';
     const qfHtml = [];
     const normalHtml = [];
@@ -170,15 +168,18 @@ const MSelectList = React.createClass({
         </ul>,
       ]);
     };
-    if (current && current[this.props.dataKey] && current[this.props.dataValue]) {
+    if (this.state.value) {
+      const sel = this.props.data.filter(item => {
+        return item[this.props.valueProp] === this.state.value;
+      });
       qfHtml.push(getQfItem(searchKey, locale.currentQuickSearchText));
-      normalHtml.push(getSection(searchKey, locale.currentRegion, [current]));
+      normalHtml.push(getSection(searchKey, locale.currentRegion, sel));
     }
-    Object.keys(data).forEach(key => {
-      const QF = data[key][0].QF;
+    Object.keys(data).forEach(item => {
+      const QF = data[item][0].QF;
       searchKey = `_J_qf_key_${QF}`;
       qfHtml.push(getQfItem(searchKey, QF));
-      normalHtml.push(getSection(searchKey, QF, data[key]));
+      normalHtml.push(getSection(searchKey, QF, data[item]));
     });
     return {
       qfHtml,

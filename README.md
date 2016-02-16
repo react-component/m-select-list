@@ -63,9 +63,9 @@ see example
 |showQuickSearchBar | whether show quick search bar | bool | true |
 |locale | the locale of area | Object | import from 'rmc-select-list/lib/locale/zh_CN' |
 |data | The data of list | array  | - |
-|value | current selectedItem | Object{key, value, spell}  | - |
-|defaultValue | default current selectedItem | Object{key, value, spell}  | - |
-|onChange | select item | Function(value{key, value, spell}) | - |
+|value | current selected value | string  | - |
+|defaultValue | default current selected value | string  | - |
+|onChange | select item | Function(value, item) | - |
 
 ## Test Case
 

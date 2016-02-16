@@ -11,19 +11,25 @@ import enUS from 'rmc-select-list/src/locale/en_US';
 const Demo = React.createClass({
   getInitialState() {
     return {
-      value: province[0],
+      value: '12',
     };
   },
   onChange(value) {
-    console.log('onChange', value);
+    console.log(value);
     this.setState({
       value,
     });
   },
   render() {
+    let label = '';
+    province.forEach(item => {
+      if (item.value === this.state.value) {
+        label = item.label;
+      }
+    });
     return (<div>
       <h3>simple demo</h3>
-      <p style={{ marginTop: '30' }}>选择的城市是：{this.state.value.value}</p>
+      <p style={{ marginTop: '30' }}>选择的城市是：{label}</p>
       <MSelectList
         className="wrapper"
         data={province}
