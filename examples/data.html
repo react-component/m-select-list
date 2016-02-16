@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>data.js - example - rmc-select-list@0.3.0</title>
+  <title>data.js - example - rmc-select-list@0.3.1</title>
   <meta name="viewport"
         content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
   <meta charset="utf-8"/>
@@ -257,7 +257,7 @@ Monokai Sublime style. Derived from Monokai by noformnocontent http://nn.mit-lic
 <body>
 <div class="container">
   <div class="header">
-    <h1>rmc-select-list@0.3.0</h1>
+    <h1>rmc-select-list@0.3.1</h1>
 
     <p>m-select-list ui component for react</p>
   </div>
@@ -267,128 +267,128 @@ Monokai Sublime style. Derived from Monokai by noformnocontent http://nn.mit-lic
   <div class="highlight"><pre><code language="js"><span class="hljs-comment">/* eslint comma-dangle:0 */</span>
 
 <span class="hljs-keyword">const</span> province = [{
-  key: <span class="hljs-string">'11'</span>,
-  value: <span class="hljs-string">'北京市'</span>,
+  value: <span class="hljs-string">'11'</span>,
+  label: <span class="hljs-string">'北京市'</span>,
   spell: <span class="hljs-string">'BeiJingShi'</span>
 }, {
-  key: <span class="hljs-string">'12'</span>,
-  value: <span class="hljs-string">'天津市'</span>,
+  value: <span class="hljs-string">'12'</span>,
+  label: <span class="hljs-string">'天津市'</span>,
   spell: <span class="hljs-string">'TianJinShi'</span>
 }, {
-  key: <span class="hljs-string">'13'</span>,
-  value: <span class="hljs-string">'河北省'</span>,
+  value: <span class="hljs-string">'13'</span>,
+  label: <span class="hljs-string">'河北省'</span>,
   spell: <span class="hljs-string">'HeBeiSheng'</span>
 }, {
-  key: <span class="hljs-string">'14'</span>,
-  value: <span class="hljs-string">'山西省'</span>,
+  value: <span class="hljs-string">'14'</span>,
+  label: <span class="hljs-string">'山西省'</span>,
   spell: <span class="hljs-string">'ShanXiSheng'</span>
 }, {
-  key: <span class="hljs-string">'15'</span>,
-  value: <span class="hljs-string">'内蒙古自治区'</span>,
+  value: <span class="hljs-string">'15'</span>,
+  label: <span class="hljs-string">'内蒙古自治区'</span>,
   spell: <span class="hljs-string">'NeiMengGuZiZhiQu'</span>
 }, {
-  key: <span class="hljs-string">'21'</span>,
-  value: <span class="hljs-string">'辽宁省'</span>,
+  value: <span class="hljs-string">'21'</span>,
+  label: <span class="hljs-string">'辽宁省'</span>,
   spell: <span class="hljs-string">'LiaoNingSheng'</span>
 }, {
-  key: <span class="hljs-string">'22'</span>,
-  value: <span class="hljs-string">'吉林省'</span>,
+  value: <span class="hljs-string">'22'</span>,
+  label: <span class="hljs-string">'吉林省'</span>,
   spell: <span class="hljs-string">'JiLinSheng'</span>
 }, {
-  key: <span class="hljs-string">'23'</span>,
-  value: <span class="hljs-string">'黑龙江省'</span>,
+  value: <span class="hljs-string">'23'</span>,
+  label: <span class="hljs-string">'黑龙江省'</span>,
   spell: <span class="hljs-string">'HeiLongJiangSheng'</span>
 }, {
-  key: <span class="hljs-string">'31'</span>,
-  value: <span class="hljs-string">'上海市'</span>,
+  value: <span class="hljs-string">'31'</span>,
+  label: <span class="hljs-string">'上海市'</span>,
   spell: <span class="hljs-string">'ShangHaiShi'</span>
 }, {
-  key: <span class="hljs-string">'32'</span>,
-  value: <span class="hljs-string">'江苏省'</span>,
+  value: <span class="hljs-string">'32'</span>,
+  label: <span class="hljs-string">'江苏省'</span>,
   spell: <span class="hljs-string">'JiangSuSheng'</span>
 }, {
-  key: <span class="hljs-string">'33'</span>,
-  value: <span class="hljs-string">'浙江省'</span>,
+  value: <span class="hljs-string">'33'</span>,
+  label: <span class="hljs-string">'浙江省'</span>,
   spell: <span class="hljs-string">'ZheJiangSheng'</span>
 }, {
-  key: <span class="hljs-string">'34'</span>,
-  value: <span class="hljs-string">'安徽省'</span>,
+  value: <span class="hljs-string">'34'</span>,
+  label: <span class="hljs-string">'安徽省'</span>,
   spell: <span class="hljs-string">'AnHuiSheng'</span>
 }, {
-  key: <span class="hljs-string">'35'</span>,
-  value: <span class="hljs-string">'福建省'</span>,
+  value: <span class="hljs-string">'35'</span>,
+  label: <span class="hljs-string">'福建省'</span>,
   spell: <span class="hljs-string">'FuJianSheng'</span>
 }, {
-  key: <span class="hljs-string">'36'</span>,
-  value: <span class="hljs-string">'江西省'</span>,
+  value: <span class="hljs-string">'36'</span>,
+  label: <span class="hljs-string">'江西省'</span>,
   spell: <span class="hljs-string">'JiangXiSheng'</span>
 }, {
-  key: <span class="hljs-string">'37'</span>,
-  value: <span class="hljs-string">'山东省'</span>,
+  value: <span class="hljs-string">'37'</span>,
+  label: <span class="hljs-string">'山东省'</span>,
   spell: <span class="hljs-string">'ShanDongSheng'</span>
 }, {
-  key: <span class="hljs-string">'41'</span>,
-  value: <span class="hljs-string">'河南省'</span>,
+  value: <span class="hljs-string">'41'</span>,
+  label: <span class="hljs-string">'河南省'</span>,
   spell: <span class="hljs-string">'HeNanSheng'</span>
 }, {
-  key: <span class="hljs-string">'42'</span>,
-  value: <span class="hljs-string">'湖北省'</span>,
+  value: <span class="hljs-string">'42'</span>,
+  label: <span class="hljs-string">'湖北省'</span>,
   spell: <span class="hljs-string">'HuBeiSheng'</span>
 }, {
-  key: <span class="hljs-string">'43'</span>,
-  value: <span class="hljs-string">'湖南省'</span>,
+  value: <span class="hljs-string">'43'</span>,
+  label: <span class="hljs-string">'湖南省'</span>,
   spell: <span class="hljs-string">'HuNanSheng'</span>
 }, {
-  key: <span class="hljs-string">'44'</span>,
-  value: <span class="hljs-string">'广东省'</span>,
+  value: <span class="hljs-string">'44'</span>,
+  label: <span class="hljs-string">'广东省'</span>,
   spell: <span class="hljs-string">'GuangDongSheng'</span>
 }, {
-  key: <span class="hljs-string">'45'</span>,
-  value: <span class="hljs-string">'广西壮族自治区'</span>,
+  value: <span class="hljs-string">'45'</span>,
+  label: <span class="hljs-string">'广西壮族自治区'</span>,
   spell: <span class="hljs-string">'GuangXiZhuangZuZiZhiQu'</span>
 }, {
-  key: <span class="hljs-string">'46'</span>,
-  value: <span class="hljs-string">'海南省'</span>,
+  value: <span class="hljs-string">'46'</span>,
+  label: <span class="hljs-string">'海南省'</span>,
   spell: <span class="hljs-string">'HaiNanSheng'</span>
 }, {
-  key: <span class="hljs-string">'50'</span>,
-  value: <span class="hljs-string">'重庆市'</span>,
+  value: <span class="hljs-string">'50'</span>,
+  label: <span class="hljs-string">'重庆市'</span>,
   spell: <span class="hljs-string">'ChongQingShi'</span>
 }, {
-  key: <span class="hljs-string">'51'</span>,
-  value: <span class="hljs-string">'四川省'</span>,
+  value: <span class="hljs-string">'51'</span>,
+  label: <span class="hljs-string">'四川省'</span>,
   spell: <span class="hljs-string">'SiChuanSheng'</span>
 }, {
-  key: <span class="hljs-string">'52'</span>,
-  value: <span class="hljs-string">'贵州省'</span>,
+  value: <span class="hljs-string">'52'</span>,
+  label: <span class="hljs-string">'贵州省'</span>,
   spell: <span class="hljs-string">'GuiZhouSheng'</span>
 }, {
-  key: <span class="hljs-string">'53'</span>,
-  value: <span class="hljs-string">'云南省'</span>,
+  value: <span class="hljs-string">'53'</span>,
+  label: <span class="hljs-string">'云南省'</span>,
   spell: <span class="hljs-string">'YunNanSheng'</span>
 }, {
-  key: <span class="hljs-string">'54'</span>,
-  value: <span class="hljs-string">'西藏自治区'</span>,
+  value: <span class="hljs-string">'54'</span>,
+  label: <span class="hljs-string">'西藏自治区'</span>,
   spell: <span class="hljs-string">'XiCangZiZhiQu'</span>
 }, {
-  key: <span class="hljs-string">'61'</span>,
-  value: <span class="hljs-string">'陕西省'</span>,
+  value: <span class="hljs-string">'61'</span>,
+  label: <span class="hljs-string">'陕西省'</span>,
   spell: <span class="hljs-string">'ShanXiSheng'</span>
 }, {
-  key: <span class="hljs-string">'62'</span>,
-  value: <span class="hljs-string">'甘肃省'</span>,
+  value: <span class="hljs-string">'62'</span>,
+  label: <span class="hljs-string">'甘肃省'</span>,
   spell: <span class="hljs-string">'GanSuSheng'</span>
 }, {
-  key: <span class="hljs-string">'63'</span>,
-  value: <span class="hljs-string">'青海省'</span>,
+  value: <span class="hljs-string">'63'</span>,
+  label: <span class="hljs-string">'青海省'</span>,
   spell: <span class="hljs-string">'QingHaiSheng'</span>
 }, {
-  key: <span class="hljs-string">'64'</span>,
-  value: <span class="hljs-string">'宁夏回族自治区'</span>,
+  value: <span class="hljs-string">'64'</span>,
+  label: <span class="hljs-string">'宁夏回族自治区'</span>,
   spell: <span class="hljs-string">'NingXiaHuiZuZiZhiQu'</span>
 }, {
-  key: <span class="hljs-string">'65'</span>,
-  value: <span class="hljs-string">'新疆维吾尔自治区'</span>,
+  value: <span class="hljs-string">'65'</span>,
+  label: <span class="hljs-string">'新疆维吾尔自治区'</span>,
   spell: <span class="hljs-string">'XinJiangWeiWuErZiZhiQu'</span>
 }];
 
