@@ -9,11 +9,7 @@ webpackJsonp([0,1],[
 /* 1 */
 /***/ function(module, exports, __webpack_require__) {
 
-	// use jsx to render html, do not modify simple.html
-	
 	'use strict';
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 	
 	__webpack_require__(2);
 	
@@ -33,17 +29,17 @@ webpackJsonp([0,1],[
 	
 	var _data = __webpack_require__(169);
 	
-	var _rmcSelectListSrcLocaleEn_US = __webpack_require__(170);
+	var _en_US = __webpack_require__(170);
 	
-	var _rmcSelectListSrcLocaleEn_US2 = _interopRequireDefault(_rmcSelectListSrcLocaleEn_US);
+	var _en_US2 = _interopRequireDefault(_en_US);
 	
-	var Demo = _react2['default'].createClass({
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var Demo = _react2.default.createClass({
 	  displayName: 'Demo',
-	
 	  getInitialState: function getInitialState() {
 	    return {
-	      selectedItem: _data.province[0],
-	      value: 'b'
+	      value: _data.province[0]
 	    };
 	  },
 	  onChange: function onChange(value) {
@@ -52,40 +48,33 @@ webpackJsonp([0,1],[
 	      value: value
 	    });
 	  },
-	  onSelect: function onSelect(selectedItem) {
-	    console.log('onSelect', selectedItem);
-	    this.setState({
-	      selectedItem: selectedItem
-	    });
-	  },
 	  render: function render() {
-	    return _react2['default'].createElement(
+	    return _react2.default.createElement(
 	      'div',
 	      null,
-	      _react2['default'].createElement(
+	      _react2.default.createElement(
 	        'h3',
 	        null,
 	        'simple demo'
 	      ),
-	      _react2['default'].createElement(
+	      _react2.default.createElement(
 	        'p',
 	        { style: { marginTop: '30' } },
 	        '选择的城市是：',
-	        this.state.selectedItem.value
+	        this.state.value.value
 	      ),
-	      _react2['default'].createElement(_rmcSelectList2['default'], { className: 'wrapper',
+	      _react2.default.createElement(_rmcSelectList2.default, {
+	        className: 'wrapper',
 	        data: _data.province,
-	        locale: _rmcSelectListSrcLocaleEn_US2['default'],
-	        selectedItem: this.state.selectedItem,
-	        defaultValue: this.state.value,
-	        onChange: this.onChange,
-	        onSelect: this.onSelect
+	        locale: _en_US2.default,
+	        value: this.state.value,
+	        onChange: this.onChange
 	      })
 	    );
 	  }
-	});
+	}); // use jsx to render html, do not modify simple.html
 	
-	_reactDom2['default'].render(_react2['default'].createElement(Demo, null), document.getElementById('__react-content'));
+	_reactDom2.default.render(_react2.default.createElement(Demo, null), document.getElementById('__react-content'));
 
 /***/ },
 /* 2 */
@@ -103,40 +92,40 @@ webpackJsonp([0,1],[
 /* 4 */
 /***/ function(module, exports, __webpack_require__) {
 
-	// export this package's api
 	'use strict';
-	
-	Object.defineProperty(exports, '__esModule', {
+
+	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-	
+
 	var _src = __webpack_require__(5);
-	
+
 	var _src2 = _interopRequireDefault(_src);
 
-	exports['default'] = _src2['default'];
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	exports.default = _src2.default; // export this package's api
+
 	module.exports = exports['default'];
 
 /***/ },
 /* 5 */
 /***/ function(module, exports, __webpack_require__) {
 
-	// export this package's api
 	'use strict';
-	
-	Object.defineProperty(exports, '__esModule', {
+
+	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-	
+
 	var _MSelectList = __webpack_require__(6);
-	
+
 	var _MSelectList2 = _interopRequireDefault(_MSelectList);
 
-	exports['default'] = _MSelectList2['default'];
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	exports.default = _MSelectList2.default; // export this package's api
+
 	module.exports = exports['default'];
 
 /***/ },
@@ -145,17 +134,9 @@ webpackJsonp([0,1],[
 
 	'use strict';
 	
-	Object.defineProperty(exports, '__esModule', {
+	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-	
-	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) arr2[i] = arr[i]; return arr2; } else { return Array.from(arr); } }
-	
-	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 	
 	var _react = __webpack_require__(7);
 	
@@ -165,21 +146,27 @@ webpackJsonp([0,1],[
 	
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 	
-	// import assign from 'object-assign';
-	
 	var _classnames = __webpack_require__(165);
 	
 	var _classnames2 = _interopRequireDefault(_classnames);
 	
 	var _util = __webpack_require__(166);
 	
-	var _localeZh_CN = __webpack_require__(168);
+	var _zh_CN = __webpack_require__(168);
 	
-	var _localeZh_CN2 = _interopRequireDefault(_localeZh_CN);
+	var _zh_CN2 = _interopRequireDefault(_zh_CN);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+	
+	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+	// import assign from 'object-assign';
+	
 	
 	function noop() {}
 	
-	var MSelectList = _react2['default'].createClass({
+	var MSelectList = _react2.default.createClass({
 	  displayName: 'MSelectList',
 	
 	  propTypes: {
@@ -190,26 +177,28 @@ webpackJsonp([0,1],[
 	    locale: _react.PropTypes.object,
 	    dataKey: _react.PropTypes.string,
 	    dataValue: _react.PropTypes.string,
-	    showQfList: _react.PropTypes.bool,
+	    showQuickSearchBar: _react.PropTypes.bool,
+	    showInput: _react.PropTypes.bool,
 	    data: _react.PropTypes.array,
-	    value: _react.PropTypes.string,
-	    defaultValue: _react.PropTypes.string,
-	    selectedItem: _react.PropTypes.object,
-	    defaultSelectedItem: _react.PropTypes.object,
+	    inputValue: _react.PropTypes.string,
+	    defaultInputValue: _react.PropTypes.string,
+	    value: _react.PropTypes.object,
+	    defaultValue: _react.PropTypes.object,
+	    onInputChange: _react.PropTypes.func,
 	    onChange: _react.PropTypes.func,
-	    onSelect: _react.PropTypes.func,
 	    onQfSelect: _react.PropTypes.func
 	  },
 	  getDefaultProps: function getDefaultProps() {
 	    return {
-	      prefixCls: 'rmc-ls',
+	      prefixCls: 'rmc-select-list',
 	      placeholder: '搜索',
-	      locale: _localeZh_CN2['default'],
+	      locale: _zh_CN2.default,
 	      dataKey: 'key',
 	      dataValue: 'value',
-	      showQfList: true,
+	      showQuickSearchBar: true,
+	      showInput: false,
+	      onInputChange: noop,
 	      onChange: noop,
-	      onSelect: noop,
 	      onQfSelect: noop
 	    };
 	  },
@@ -218,32 +207,32 @@ webpackJsonp([0,1],[
 	      clickFeedBack: false,
 	      showSearch: false,
 	      showLighter: false,
-	      showQfList: this.props.showQfList,
-	      value: this.props.value || this.props.defaultValue || '',
-	      selectedItem: this.props.selectedItem || this.props.defaultSelectedItem
+	      showQuickSearchBar: this.props.showQuickSearchBar,
+	      inputValue: this.props.inputValue || this.props.defaultInputValue || '',
+	      value: this.props.value || this.props.defaultValue
 	    };
 	  },
 	  componentDidMount: function componentDidMount() {
 	    var _refs = this.refs;
 	    var viewport = _refs.viewport;
-	    var qfList = _refs.qfList;
+	    var quickSearchBar = _refs.quickSearchBar;
 	
-	    qfList.style['margin-top'] = -(qfList.offsetHeight / 2 + 20) + 'px';
+	    quickSearchBar.style['margin-top'] = -(quickSearchBar.offsetHeight / 2 + 20) + 'px';
 	
 	    var eventManager = new _util.EventManager(viewport);
 	    (0, _util.handleTapping)(eventManager, this);
-	    this.qfListEvent = (0, _util.handleQuickBar)(this, _reactDom2['default'].findDOMNode(this));
+	    this.qfListEvent = (0, _util.handleQuickBar)(this, _reactDom2.default.findDOMNode(this));
 	    this.viewportEvent = eventManager;
 	  },
 	  componentWillReceiveProps: function componentWillReceiveProps(nextProps) {
+	    if ('inputValue' in nextProps) {
+	      this.setState({
+	        inputValue: nextProps.inputValue
+	      });
+	    }
 	    if ('value' in nextProps) {
 	      this.setState({
 	        value: nextProps.value
-	      });
-	    }
-	    if ('selectedItem' in nextProps) {
-	      this.setState({
-	        selectedItem: nextProps.selectedItem
 	      });
 	    }
 	  },
@@ -254,18 +243,18 @@ webpackJsonp([0,1],[
 	  onQfSelect: function onQfSelect(selectedItem) {
 	    this.props.onQfSelect(selectedItem);
 	  },
-	  onSelect: function onSelect(selectedItem) {
-	    this.props.onSelect(selectedItem);
+	  onChange: function onChange(selectedItem) {
+	    this.props.onChange(selectedItem);
 	  },
-	  onChange: function onChange(e) {
+	  onInputChange: function onInputChange(e) {
 	    this.setState({
-	      value: e.target.value
+	      inputValue: e.target.value
 	    });
-	    this.props.onChange(e.target.value, e);
+	    this.props.onInputChange(e.target.value, e);
 	  },
 	  onSearch: function onSearch() {
 	    this.setState({
-	      showQfList: false,
+	      showQuickSearchBar: false,
 	      showSearch: true
 	    });
 	  },
@@ -273,8 +262,8 @@ webpackJsonp([0,1],[
 	    var _this = this;
 	
 	    this.setState({
-	      value: '',
-	      showQfList: true,
+	      inputValue: '',
+	      showQuickSearchBar: true,
 	      showSearch: false
 	    }, function () {
 	      _this.refs.sinput.blur();
@@ -303,10 +292,12 @@ webpackJsonp([0,1],[
 	    var transData = {};
 	    var cache = {};
 	    data.forEach(function (item) {
+	      /* eslint no-param-reassign:0 */
 	      item.QF = item.QF || item.spell[0].toUpperCase();
 	      item.abbr = item.abbr || item.spell.replace(/[a-z]+/g, '');
 	      transData[item.QF] = transData[item.QF] || [];
-	      transData[item.QF].push(cache[item[dataKey] + '_' + item.spell] = item);
+	      cache[item[dataKey] + '_' + item.spell] = item;
+	      transData[item.QF].push(item);
 	    });
 	    this.cache = cache;
 	    return transData;
@@ -315,14 +306,15 @@ webpackJsonp([0,1],[
 	    var _this3 = this;
 	
 	    return data.map(function (item, index) {
-	      return _react2['default'].createElement(
+	      return _react2.default.createElement(
 	        'li',
 	        { key: index },
-	        _react2['default'].createElement(
+	        _react2.default.createElement(
 	          'a',
 	          {
 	            'data-key': item[_this3.props.dataKey],
-	            'data-spell': item.spell },
+	            'data-spell': item.spell
+	          },
 	          item[_this3.props.dataValue]
 	        )
 	      );
@@ -334,17 +326,17 @@ webpackJsonp([0,1],[
 	    var locale = this.props.locale;
 	    var data = this._initData([].concat(_toConsumableArray(this.props.data)));
 	    this.data = data;
-	    var current = this.state.selectedItem;
+	    var current = this.state.value;
 	    var searchKey = '_J_qf_key_DQ';
 	    var qfHtml = [];
 	    var normalHtml = [];
 	    var keyIndex = 1;
 	    var getQfItem = function getQfItem(sk, QF) {
 	      keyIndex++;
-	      return _react2['default'].createElement(
+	      return _react2.default.createElement(
 	        'li',
 	        { key: keyIndex },
-	        _react2['default'].createElement(
+	        _react2.default.createElement(
 	          'a',
 	          { onClick: _this4.onQfSelect, 'data-qf-target': '.' + sk },
 	          QF
@@ -352,18 +344,18 @@ webpackJsonp([0,1],[
 	      );
 	    };
 	    var getSection = function getSection(sk, QF, d) {
-	      return [_react2['default'].createElement(
+	      return [_react2.default.createElement(
 	        'div',
-	        { className: (0, _classnames2['default'])(_this4.props.prefixCls + '-item-order', searchKey) },
+	        { className: (0, _classnames2.default)(_this4.props.prefixCls + '-item-order', searchKey) },
 	        QF
-	      ), _react2['default'].createElement(
+	      ), _react2.default.createElement(
 	        'ul',
 	        { className: _this4.props.prefixCls + '-item' },
 	        _this4.renderCommonItem(d)
 	      )];
 	    };
 	    if (current && current[this.props.dataKey] && current[this.props.dataValue]) {
-	      qfHtml.push(getQfItem(searchKey, locale.currentQf));
+	      qfHtml.push(getQfItem(searchKey, locale.currentQuickSearchText));
 	      normalHtml.push(getSection(searchKey, locale.currentRegion, [current]));
 	    }
 	    Object.keys(data).forEach(function (key) {
@@ -372,92 +364,103 @@ webpackJsonp([0,1],[
 	      qfHtml.push(getQfItem(searchKey, QF));
 	      normalHtml.push(getSection(searchKey, QF, data[key]));
 	    });
-	    return { qfHtml: qfHtml, normalHtml: normalHtml };
+	    return {
+	      qfHtml: qfHtml,
+	      normalHtml: normalHtml
+	    };
 	  },
 	  render: function render() {
-	    var _qfListCls, _normalViewCls, _searchViewCls, _lighterCls;
+	    var _quickSearchBarCls, _normalViewCls, _searchViewCls, _lighterCls;
 	
 	    var _props = this.props;
 	    var className = _props.className;
 	    var prefixCls = _props.prefixCls;
 	    var placeholder = _props.placeholder;
+	    var showInput = _props.showInput;
 	
 	    var _renderData = this.renderData();
 	
 	    var qfHtml = _renderData.qfHtml;
 	    var normalHtml = _renderData.normalHtml;
 	
-	    var inputProps = {
-	      value: this.state.value,
-	      onChange: this.onChange
-	    };
-	    var qfListCls = (_qfListCls = {}, _defineProperty(_qfListCls, prefixCls + '-quick-search-bar', true), _defineProperty(_qfListCls, prefixCls + '-hide', !this.state.showQfList), _defineProperty(_qfListCls, prefixCls + '-on', this.state.clickFeedBack), _qfListCls);
-	    var normalViewCls = (_normalViewCls = {}, _defineProperty(_normalViewCls, prefixCls + '-content', true), _defineProperty(_normalViewCls, prefixCls + '-hide', this.state.showSearch && !!this.state.value.length), _normalViewCls);
-	    var searchViewCls = (_searchViewCls = {}, _defineProperty(_searchViewCls, prefixCls + '-content', true), _defineProperty(_searchViewCls, prefixCls + '-hide', !this.state.showSearch && this.state.value.length), _searchViewCls);
+	    var quickSearchBarCls = (_quickSearchBarCls = {}, _defineProperty(_quickSearchBarCls, prefixCls + '-quick-search-bar', true), _defineProperty(_quickSearchBarCls, prefixCls + '-hide', !this.state.showQuickSearchBar), _defineProperty(_quickSearchBarCls, prefixCls + '-on', this.state.clickFeedBack), _quickSearchBarCls);
+	    var normalViewCls = (_normalViewCls = {}, _defineProperty(_normalViewCls, prefixCls + '-content', true), _defineProperty(_normalViewCls, prefixCls + '-hide', this.state.showSearch && !!this.state.inputValue.length), _normalViewCls);
+	    var searchViewCls = (_searchViewCls = {}, _defineProperty(_searchViewCls, prefixCls + '-content', true), _defineProperty(_searchViewCls, prefixCls + '-hide', !this.state.showSearch && this.state.inputValue.length), _searchViewCls);
 	    var lighterCls = (_lighterCls = {}, _defineProperty(_lighterCls, prefixCls + '-lighter', true), _defineProperty(_lighterCls, prefixCls + '-hide', !this.state.showLighter), _lighterCls);
-	    return _react2['default'].createElement(
+	    return _react2.default.createElement(
 	      'div',
-	      { className: (0, _classnames2['default'])(className, prefixCls + '-playground') },
-	      _react2['default'].createElement(
+	      { className: (0, _classnames2.default)(className, prefixCls + '-playground') },
+	      _react2.default.createElement(
 	        'ul',
-	        { className: (0, _classnames2['default'])(qfListCls), ref: 'qfList' },
-	        _react2['default'].createElement(
+	        { className: (0, _classnames2.default)(quickSearchBarCls), ref: 'quickSearchBar' },
+	        showInput ? _react2.default.createElement(
 	          'li',
 	          null,
-	          _react2['default'].createElement(
+	          _react2.default.createElement(
 	            'a',
 	            { 'data-qf-target': '.' + prefixCls + '-search' },
-	            _react2['default'].createElement('i', { className: prefixCls + '-icon-search' })
+	            _react2.default.createElement('i', { className: prefixCls + '-icon-search' })
 	          )
-	        ),
+	        ) : null,
 	        qfHtml
 	      ),
-	      _react2['default'].createElement(
+	      _react2.default.createElement(
 	        'div',
 	        { className: prefixCls + '-body', ref: 'viewport' },
-	        _react2['default'].createElement(
+	        _react2.default.createElement(
 	          'div',
 	          { className: prefixCls + '-scroller', ref: 'container' },
-	          _react2['default'].createElement(
+	          _react2.default.createElement(
 	            'div',
-	            { className: (0, _classnames2['default'])(prefixCls + '-search', prefixCls + '-input-autoclear') },
-	            _react2['default'].createElement(
-	              'div',
+	            { className: (0, _classnames2.default)(prefixCls + '-search', prefixCls + '-input-autoclear'),
+	              style: { display: showInput ? 'block' : 'none!important' }
+	            },
+	            _react2.default.createElement(
+	              'form',
 	              { className: prefixCls + '-search-input' },
-	              _react2['default'].createElement('input', _extends({ className: prefixCls + '-search-value',
-	                type: 'text', placeholder: placeholder,
-	                'data-cid': 'sinput', ref: 'sinput' }, inputProps)),
-	              _react2['default'].createElement(
+	              _react2.default.createElement('input', {
+	                className: prefixCls + '-search-value',
+	                type: 'text',
+	                placeholder: placeholder,
+	                'data-cid': 'sinput', ref: 'sinput',
+	                value: this.state.inputValue,
+	                onChange: this.onInputChange
+	              }),
+	              _react2.default.createElement(
 	                'div',
-	                { className: prefixCls + '-search-clear',
+	                {
+	                  className: prefixCls + '-search-clear',
 	                  'data-cid': 'clear',
-	                  style: { width: 'auto' } },
-	                _react2['default'].createElement('i', { className: prefixCls + '-icon-clear',
-	                  style: { visibility: this.state.showSearch ? 'visible' : 'hidden' } })
+	                  style: { width: 'auto' }
+	                },
+	                _react2.default.createElement('i', {
+	                  className: prefixCls + '-icon-clear',
+	                  style: { visibility: this.state.showSearch ? 'visible' : 'hidden' }
+	                })
 	              )
 	            )
 	          ),
-	          _react2['default'].createElement(
+	          _react2.default.createElement(
 	            'div',
-	            { className: (0, _classnames2['default'])(normalViewCls), ref: 'normalView' },
+	            { className: (0, _classnames2.default)(normalViewCls), ref: 'normalView' },
 	            normalHtml
 	          ),
-	          _react2['default'].createElement(
+	          _react2.default.createElement(
 	            'div',
-	            { className: (0, _classnames2['default'])(searchViewCls), ref: 'searchView' },
-	            _react2['default'].createElement(
+	            { className: (0, _classnames2.default)(searchViewCls), ref: 'searchView' },
+	            _react2.default.createElement(
 	              'ul',
 	              { className: prefixCls + '-item' },
-	              this.renderCommonItem(this.getMatchData(this.state.value))
+	              this.renderCommonItem(this.getMatchData(this.state.inputValue))
 	            )
 	          )
 	        )
 	      ),
-	      _react2['default'].createElement('div', { className: (0, _classnames2['default'])(lighterCls), ref: 'lighter' })
+	      _react2.default.createElement('div', { className: (0, _classnames2.default)(lighterCls), ref: 'lighter' })
 	    );
 	  }
 	});
-	exports['default'] = MSelectList;
+	exports.default = MSelectList;
 	module.exports = exports['default'];
 
 /***/ },
@@ -9717,6 +9720,7 @@ webpackJsonp([0,1],[
 	 */
 	var EventInterface = {
 	  type: null,
+	  target: null,
 	  // currentTarget is set when dispatching; no use in copying it here
 	  currentTarget: emptyFunction.thatReturnsNull,
 	  eventPhase: null,
@@ -9750,8 +9754,6 @@ webpackJsonp([0,1],[
 	  this.dispatchConfig = dispatchConfig;
 	  this.dispatchMarker = dispatchMarker;
 	  this.nativeEvent = nativeEvent;
-	  this.target = nativeEventTarget;
-	  this.currentTarget = nativeEventTarget;
 	
 	  var Interface = this.constructor.Interface;
 	  for (var propName in Interface) {
@@ -9762,7 +9764,11 @@ webpackJsonp([0,1],[
 	    if (normalize) {
 	      this[propName] = normalize(nativeEvent);
 	    } else {
-	      this[propName] = nativeEvent[propName];
+	      if (propName === 'target') {
+	        this.target = nativeEventTarget;
+	      } else {
+	        this[propName] = nativeEvent[propName];
+	      }
 	    }
 	  }
 	
@@ -13611,7 +13617,10 @@ webpackJsonp([0,1],[
 	      }
 	    });
 	
-	    nativeProps.children = content;
+	    if (content) {
+	      nativeProps.children = content;
+	    }
+	
 	    return nativeProps;
 	  }
 	
@@ -19084,7 +19093,7 @@ webpackJsonp([0,1],[
 	
 	'use strict';
 	
-	module.exports = '0.14.6';
+	module.exports = '0.14.7';
 
 /***/ },
 /* 153 */
@@ -20115,33 +20124,29 @@ webpackJsonp([0,1],[
 
 	'use strict';
 	
-	Object.defineProperty(exports, '__esModule', {
+	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
+	exports.CLICK = exports.CANCEL = exports.END = exports.MOVE = exports.START = exports.isTouchable = undefined;
 	exports.EventManager = EventManager;
 	exports.handleScrolling = handleScrolling;
 	exports.handleTapping = handleTapping;
 	exports.handleQuickBar = handleQuickBar;
 	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-	
 	var _objectAssign = __webpack_require__(167);
 	
 	var _objectAssign2 = _interopRequireDefault(_objectAssign);
 	
-	var isTouchable = ('ontouchstart' in window);
-	exports.isTouchable = isTouchable;
-	var START = isTouchable ? 'touchstart' : 'mousedown';
-	exports.START = START;
-	var MOVE = isTouchable ? 'touchmove' : 'mousemove';
-	exports.MOVE = MOVE;
-	var END = isTouchable ? 'touchend' : 'mouseup';
-	exports.END = END;
-	var CANCEL = isTouchable ? 'touchcancel' : 'mousecancel';
-	exports.CANCEL = CANCEL;
-	var CLICK = isTouchable ? 'touchstart' : 'click';
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	exports.CLICK = CLICK;
+	var isTouchable = exports.isTouchable = 'ontouchstart' in window; /* eslint no-param-reassign:0*/
+	
+	var START = exports.START = isTouchable ? 'touchstart' : 'mousedown';
+	var MOVE = exports.MOVE = isTouchable ? 'touchmove' : 'mousemove';
+	var END = exports.END = isTouchable ? 'touchend' : 'mouseup';
+	var CANCEL = exports.CANCEL = isTouchable ? 'touchcancel' : 'mousecancel';
+	var CLICK = exports.CLICK = isTouchable ? 'touchstart' : 'click';
+	
 	var VALVE = 10;
 	var isBadMobile = /Android[^\d]*(1|2|3|4\.0)/.test(window.navigator.appVersion) || /iPhone[^\d]*(5)/.test(window.navigator.appVersion);
 	
@@ -20192,7 +20197,6 @@ webpackJsonp([0,1],[
 	}
 	
 	// event management helper
-	
 	function EventManager(target) {
 	  this.target = target;
 	  this._startEvents = [];
@@ -20477,8 +20481,9 @@ webpackJsonp([0,1],[
 	    var isHit = false;
 	
 	    if (id) {
+	      // todo. setTimeout is necessary ?
 	      setTimeout(function () {
-	        instance.onSelect(instance.cache[id + '_' + target.getAttribute('data-spell')]);
+	        instance.onChange(instance.cache[id + '_' + target.getAttribute('data-spell')]);
 	      }, 0);
 	      isHit = true;
 	    } else if (target.getAttribute('data-cid') === 'sinput') {
@@ -20508,19 +20513,19 @@ webpackJsonp([0,1],[
 	  }
 	
 	  instance._useNative = true;
-	  (0, _objectAssign2['default'])(instance.refs.viewport.style, {
+	  (0, _objectAssign2.default)(instance.refs.viewport.style, {
 	    '-webkit-overflow-scrolling': 'touch',
 	    'z-index': '998',
-	    'overflow': 'auto'
+	    overflow: 'auto'
 	  });
 	}
 	
 	function handleQuickBar(instance, element) {
 	  var hCache = [];
-	  var qfList = instance.refs.qfList;
-	  var height = qfList.offsetHeight;
+	  var quickSearchBar = instance.refs.quickSearchBar;
+	  var height = quickSearchBar.offsetHeight;
 	
-	  [].slice.call(qfList.querySelectorAll('[data-qf-target]')).forEach(function (d) {
+	  [].slice.call(quickSearchBar.querySelectorAll('[data-qf-target]')).forEach(function (d) {
 	    hCache.push([d]);
 	  });
 	
@@ -20592,7 +20597,7 @@ webpackJsonp([0,1],[
 	    if (_target.getAttribute(tAttr) || _target.parentNode.getAttribute(tAttr)) {
 	      _inMoving = true;
 	      _isProcessed = false;
-	      _basePos = qfList.getBoundingClientRect();
+	      _basePos = quickSearchBar.getBoundingClientRect();
 	      _updateLighter(_target);
 	    }
 	    e.preventDefault();
@@ -20643,7 +20648,7 @@ webpackJsonp([0,1],[
 	    });
 	  }
 	
-	  var eventManager = new EventManager(qfList);
+	  var eventManager = new EventManager(quickSearchBar);
 	  eventManager.addHandler({
 	    start: _start,
 	    move: _move,
@@ -20704,11 +20709,11 @@ webpackJsonp([0,1],[
 
 	'use strict';
 	
-	Object.defineProperty(exports, '__esModule', {
+	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	exports['default'] = {
-	  currentQf: '当前',
+	exports.default = {
+	  currentQuickSearchText: '当前',
 	  currentRegion: '当前地区'
 	};
 	module.exports = exports['default'];
@@ -20717,13 +20722,13 @@ webpackJsonp([0,1],[
 /* 169 */
 /***/ function(module, exports) {
 
-	/*eslint-disable no-alert, no-console*/
-	
 	'use strict';
 	
-	Object.defineProperty(exports, '__esModule', {
+	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
+	/* eslint comma-dangle:0 */
+	
 	var province = [{
 	  key: '11',
 	  value: '北京市',
@@ -20858,11 +20863,11 @@ webpackJsonp([0,1],[
 
 	'use strict';
 	
-	Object.defineProperty(exports, '__esModule', {
+	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	exports['default'] = {
-	  currentQf: 'current',
+	exports.default = {
+	  currentQuickSearchText: 'current',
 	  currentRegion: 'current region'
 	};
 	module.exports = exports['default'];
