@@ -58,7 +58,7 @@ see example
 | name     | description    | type     | default      |
 |----------|----------------|----------|--------------|
 |className | additional css class of root dom node | String | '' |
-|prefixCls | prefix class | String | 'rmc-ls' |
+|prefixCls | prefix class | String | 'rmc-select-list' |
 |placeholder | input placeholder | String | '搜索' |
 |showQuickSearchBar | whether show quick search bar | bool | true |
 |locale | the locale of area | Object | import from 'rmc-select-list/lib/locale/zh_CN' |
