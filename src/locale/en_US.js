@@ -1,5 +1,5 @@
 
 export default {
-  currentQf: 'current',
+  currentQuickSearchText: 'current',
   currentRegion: 'current region',
 };

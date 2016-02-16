@@ -60,14 +60,12 @@ see example
 |className | additional css class of root dom node | String | '' |
 |prefixCls | prefix class | String | 'rmc-ls' |
 |placeholder | input placeholder | String | '搜索' |
+|showQuickSearchBar | whether show quick search bar | bool | true |
 |locale | the locale of area | Object | import from 'rmc-select-list/lib/locale/zh_CN' |
-|data | The data of cascade | array  |  |
-|value | input value | String  | '' |
-|defaultValue | input default value | String  | '' |
-|selectedItem | input default value | Object  | - |
-|defaultSelectedItem | input default value | Object  | - |
-|onChange | input change | Function(value) | - |
-|onSelect | select item | Function(value) | - |
+|data | The data of list | array  | - |
+|value | current selectedItem | Object{key, value, spell}  | - |
+|defaultValue | default current selectedItem | Object{key, value, spell}  | - |
+|onChange | select item | Function(value{key, value, spell}) | - |
 
 ## Test Case
 

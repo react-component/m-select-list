@@ -11,8 +11,7 @@ import enUS from 'rmc-select-list/src/locale/en_US';
 const Demo = React.createClass({
   getInitialState() {
     return {
-      selectedItem: province[0],
-      value: 'b',
+      value: province[0],
     };
   },
   onChange(value) {
@@ -21,24 +20,16 @@ const Demo = React.createClass({
       value,
     });
   },
-  onSelect(selectedItem) {
-    console.log('onSelect', selectedItem);
-    this.setState({
-      selectedItem,
-    });
-  },
   render() {
     return (<div>
       <h3>simple demo</h3>
-      <p style={{ marginTop: '30' }}>选择的城市是：{this.state.selectedItem.value}</p>
+      <p style={{ marginTop: '30' }}>选择的城市是：{this.state.value.value}</p>
       <MSelectList
         className="wrapper"
         data={province}
         locale={enUS}
-        selectedItem={this.state.selectedItem}
-        defaultValue={this.state.value}
+        value={this.state.value}
         onChange={this.onChange}
-        onSelect={this.onSelect}
       />
      </div>);
   },

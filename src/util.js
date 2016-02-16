@@ -11,7 +11,7 @@ const VALVE = 10;
 const isBadMobile = (/Android[^\d]*(1|2|3|4\.0)/.test(window.navigator.appVersion) ||
   /iPhone[^\d]*(5)/.test(window.navigator.appVersion));
 
-const getTime = Date.now || function() {
+const getTime = Date.now || function () {
   return +new Date();
 };
 
@@ -53,7 +53,7 @@ function momentum(current, start, time, deceleration) {
 
   return {
     destination: Math.round(destination),
-    duration: duration,
+    duration,
   };
 }
 
@@ -67,7 +67,7 @@ export function EventManager(target) {
 }
 
 EventManager.prototype = {
-  addHandler: function(event) {
+  addHandler(event) {
     if (event.start) {
       this._startEvents.push(event.start);
     }
@@ -78,25 +78,25 @@ EventManager.prototype = {
       this._endEvents.push(event.end);
     }
   },
-  startEvent: function() {
+  startEvent() {
     const self = this;
     function _startEvent() {
-      addEvent(window, MOVE, self._move = function(e) {
-        self._moveEvents.forEach(function(callback) {
+      addEvent(window, MOVE, self._move = function (e) {
+        self._moveEvents.forEach((callback) => {
           callback.call(self, e);
         });
       }, false);
 
-      addEvent(window, END, self._end = function(e) {
-        self._endEvents.forEach(function(callback) {
+      addEvent(window, END, self._end = function (e) {
+        self._endEvents.forEach((callback) => {
           callback.call(self, e);
           callback._isEnded = true;
         });
         self.endEvent(true);
       }, false);
 
-      addEvent(window, CANCEL, self._cancel = function(e) {
-        self._endEvents.forEach(function(callback) {
+      addEvent(window, CANCEL, self._cancel = function (e) {
+        self._endEvents.forEach((callback) => {
           if (!callback._isEnded) {
             callback.call(self, e);
           }
@@ -106,30 +106,30 @@ EventManager.prototype = {
       }, false);
     }
     // catch event starting from target
-    addEvent(self.target, START, self._start = function(e) {
-      self._startEvents.forEach(function(callback) {
+    addEvent(self.target, START, self._start = function (e) {
+      self._startEvents.forEach((callback) => {
         callback.call(self, e);
       });
-      self._endEvents.forEach(function(callback) {
+      self._endEvents.forEach((callback) => {
         callback._isEnded = false;
       });
       _startEvent();
     });
   },
-  endEvent: function(keepStart) {
+  endEvent(keepStart) {
     if (!keepStart && this._start) {
       removeEvent(this.target, START, this._start, false);
       this._start = null;
     }
-    if ( this._move ) {
+    if (this._move) {
       removeEvent(window, MOVE, this._move, false);
       this._move = null;
     }
-    if ( this._end ) {
+    if (this._end) {
       removeEvent(window, END, this._end, false);
       this._end = null;
     }
-    if ( this._cancel ) {
+    if (this._cancel) {
       removeEvent(window, CANCEL, this._cancel, false);
       this._cancel = null;
     }
@@ -155,7 +155,7 @@ export function handleScrolling(eventManager, instance) {
     window.mozRequestAnimationFrame ||
     window.oRequestAnimationFrame ||
     window.msRequestAnimationFrame ||
-    function(callback) {
+    function (callback) {
       window.setTimeout(callback, 1000 / 60);
     };
 
@@ -176,7 +176,7 @@ export function handleScrolling(eventManager, instance) {
     }
 
     instance._y = Math.round(_currentPos);
-    instance.refs.container.style.top = instance._y + 'px';
+    instance.refs.container.style.top = `${instance._y}px`;
   }
 
   function _animate(destY, startY, duration) {
@@ -212,7 +212,8 @@ export function handleScrolling(eventManager, instance) {
     if (rException.test(target.tagName) || target.getAttribute('data-cid') === 'sinput') {
       return;
     }
-    if (target.getAttribute('data-cid') === 'clear' || target.parentNode.getAttribute('data-cid') === 'clear') {
+    if (target.getAttribute('data-cid') === 'clear' ||
+      target.parentNode.getAttribute('data-cid') === 'clear') {
       instance.onClear();
       return;
     }
@@ -300,7 +301,7 @@ export function handleTapping(eventManager, instance) {
 
     _el = {
       _src: target,
-      target: target,
+      target,
       pageX: _pageX(e),
       pageY: _getPageY(e),
       time: getTime(),
@@ -349,16 +350,17 @@ export function handleTapping(eventManager, instance) {
 
     if (id) {
       // todo. setTimeout is necessary ?
-      setTimeout(function() {
-        instance.onSelect(instance.cache[`${id}_${target.getAttribute('data-spell')}`]);
+      setTimeout(() => {
+        instance.onChange(instance.cache[`${id}_${target.getAttribute('data-spell')}`]);
       }, 0);
       isHit = true;
     } else if (target.getAttribute('data-cid') === 'sinput') {
-      setTimeout(function() {
+      setTimeout(() => {
         target.focus();
         instance.onSearch();
       }, 0);
-    } else if (target.getAttribute('data-cid') === 'clear' || target.parentNode.getAttribute('data-cid') === 'clear') {
+    } else if (target.getAttribute('data-cid') === 'clear' ||
+      target.parentNode.getAttribute('data-cid') === 'clear') {
       instance.onClear();
       isHit = true;
     }
@@ -383,16 +385,16 @@ export function handleTapping(eventManager, instance) {
   assign(instance.refs.viewport.style, {
     '-webkit-overflow-scrolling': 'touch',
     'z-index': '998',
-    'overflow': 'auto',
+    overflow: 'auto',
   });
 }
 
 export function handleQuickBar(instance, element) {
   const hCache = [];
-  const qfList = instance.refs.qfList;
-  const height = qfList.offsetHeight;
+  const quickSearchBar = instance.refs.quickSearchBar;
+  const height = quickSearchBar.offsetHeight;
 
-  [].slice.call(qfList.querySelectorAll('[data-qf-target]')).forEach(function(d) {
+  [].slice.call(quickSearchBar.querySelectorAll('[data-qf-target]')).forEach((d) => {
     hCache.push([d]);
   });
 
@@ -424,12 +426,12 @@ export function handleQuickBar(instance, element) {
   function _updatePosition(ele) {
     const pos = ele.offsetTop;
     if (instance._useNative) {
-      setTimeout(function() {
+      setTimeout(() => {
         instance.refs.viewport.scrollTop = pos;
       }, 20);
     } else {
       instance._y = -pos;
-      instance.refs.container.style.top = -pos + 'px';
+      instance.refs.container.style.top = `${-pos}px`;
     }
   }
   let _timer;
@@ -443,14 +445,14 @@ export function handleQuickBar(instance, element) {
       showLighter: true,
     });
     clearTimeout(_timer);
-    _timer = setTimeout(function() {
+    _timer = setTimeout(() => {
       instance.setState({
         showLighter: false,
       });
     }, 1000);
 
     const cls = 'quick-search-over';
-    hCache.forEach(function(d) {
+    hCache.forEach((d) => {
       d[0].className = d[0].className.replace(cls, '');
     });
     if (!isEnd) {
@@ -464,7 +466,7 @@ export function handleQuickBar(instance, element) {
     if (_target.getAttribute(tAttr) || _target.parentNode.getAttribute(tAttr)) {
       _inMoving = true;
       _isProcessed = false;
-      _basePos = qfList.getBoundingClientRect();
+      _basePos = quickSearchBar.getBoundingClientRect();
       _updateLighter(_target);
     }
     e.preventDefault();
@@ -515,7 +517,7 @@ export function handleQuickBar(instance, element) {
     });
   }
 
-  const eventManager = new EventManager(qfList);
+  const eventManager = new EventManager(quickSearchBar);
   eventManager.addHandler({
     start: _start,
     move: _move,

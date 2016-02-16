@@ -17,26 +17,28 @@ const MSelectList = React.createClass({
     locale: PropTypes.object,
     dataKey: PropTypes.string,
     dataValue: PropTypes.string,
-    showQfList: PropTypes.bool,
+    showQuickSearchBar: PropTypes.bool,
+    showInput: PropTypes.bool,
     data: PropTypes.array,
-    value: PropTypes.string,
-    defaultValue: PropTypes.string,
-    selectedItem: PropTypes.object,
-    defaultSelectedItem: PropTypes.object,
+    inputValue: PropTypes.string,
+    defaultInputValue: PropTypes.string,
+    value: PropTypes.object,
+    defaultValue: PropTypes.object,
+    onInputChange: PropTypes.func,
     onChange: PropTypes.func,
-    onSelect: PropTypes.func,
     onQfSelect: PropTypes.func,
   },
   getDefaultProps() {
     return {
-      prefixCls: 'rmc-ls',
+      prefixCls: 'rmc-select-list',
       placeholder: '搜索',
       locale: defaultLocale,
       dataKey: 'key',
       dataValue: 'value',
-      showQfList: true,
+      showQuickSearchBar: true,
+      showInput: false,
+      onInputChange: noop,
       onChange: noop,
-      onSelect: noop,
       onQfSelect: noop,
     };
   },
@@ -45,14 +47,14 @@ const MSelectList = React.createClass({
       clickFeedBack: false,
       showSearch: false,
       showLighter: false,
-      showQfList: this.props.showQfList,
-      value: this.props.value || this.props.defaultValue || '',
-      selectedItem: this.props.selectedItem || this.props.defaultSelectedItem,
+      showQuickSearchBar: this.props.showQuickSearchBar,
+      inputValue: this.props.inputValue || this.props.defaultInputValue || '',
+      value: this.props.value || this.props.defaultValue,
     };
   },
   componentDidMount() {
-    const { viewport, qfList } = this.refs;
-    qfList.style['margin-top'] = `${-(qfList.offsetHeight / 2 + 20)}px`;
+    const { viewport, quickSearchBar } = this.refs;
+    quickSearchBar.style['margin-top'] = `${-(quickSearchBar.offsetHeight / 2 + 20)}px`;
 
     const eventManager = new EventManager(viewport);
     handleTapping(eventManager, this);
@@ -60,14 +62,14 @@ const MSelectList = React.createClass({
     this.viewportEvent = eventManager;
   },
   componentWillReceiveProps(nextProps) {
+    if ('inputValue' in nextProps) {
+      this.setState({
+        inputValue: nextProps.inputValue,
+      });
+    }
     if ('value' in nextProps) {
       this.setState({
         value: nextProps.value,
-      });
-    }
-    if ('selectedItem' in nextProps) {
-      this.setState({
-        selectedItem: nextProps.selectedItem,
       });
     }
   },
@@ -78,25 +80,25 @@ const MSelectList = React.createClass({
   onQfSelect(selectedItem) {
     this.props.onQfSelect(selectedItem);
   },
-  onSelect(selectedItem) {
-    this.props.onSelect(selectedItem);
+  onChange(selectedItem) {
+    this.props.onChange(selectedItem);
   },
-  onChange(e) {
+  onInputChange(e) {
     this.setState({
-      value: e.target.value,
+      inputValue: e.target.value,
     });
-    this.props.onChange(e.target.value, e);
+    this.props.onInputChange(e.target.value, e);
   },
   onSearch() {
     this.setState({
-      showQfList: false,
+      showQuickSearchBar: false,
       showSearch: true,
     });
   },
   onClear() {
     this.setState({
-      value: '',
-      showQfList: true,
+      inputValue: '',
+      showQuickSearchBar: true,
       showSearch: false,
     }, () => {
       this.refs.sinput.blur();
@@ -149,7 +151,7 @@ const MSelectList = React.createClass({
     const locale = this.props.locale;
     const data = this._initData([...this.props.data]);
     this.data = data;
-    const current = this.state.selectedItem;
+    const current = this.state.value;
     let searchKey = '_J_qf_key_DQ';
     const qfHtml = [];
     const normalHtml = [];
@@ -169,7 +171,7 @@ const MSelectList = React.createClass({
       ]);
     };
     if (current && current[this.props.dataKey] && current[this.props.dataValue]) {
-      qfHtml.push(getQfItem(searchKey, locale.currentQf));
+      qfHtml.push(getQfItem(searchKey, locale.currentQuickSearchText));
       normalHtml.push(getSection(searchKey, locale.currentRegion, [current]));
     }
     Object.keys(data).forEach(key => {
@@ -184,47 +186,47 @@ const MSelectList = React.createClass({
     };
   },
   render() {
-    const { className, prefixCls, placeholder } = this.props;
+    const { className, prefixCls, placeholder, showInput } = this.props;
     const { qfHtml, normalHtml } = this.renderData();
-    const inputProps = {
-      value: this.state.value,
-      onChange: this.onChange,
-    };
-    const qfListCls = {
+    const quickSearchBarCls = {
       [`${prefixCls}-quick-search-bar`]: true,
-      [`${prefixCls}-hide`]: !this.state.showQfList,
+      [`${prefixCls}-hide`]: !this.state.showQuickSearchBar,
       [`${prefixCls}-on`]: this.state.clickFeedBack,
     };
     const normalViewCls = {
       [`${prefixCls}-content`]: true,
-      [`${prefixCls}-hide`]: this.state.showSearch && !!this.state.value.length,
+      [`${prefixCls}-hide`]: this.state.showSearch && !!this.state.inputValue.length,
     };
     const searchViewCls = {
       [`${prefixCls}-content`]: true,
-      [`${prefixCls}-hide`]: !this.state.showSearch && this.state.value.length,
+      [`${prefixCls}-hide`]: !this.state.showSearch && this.state.inputValue.length,
     };
     const lighterCls = {
       [`${prefixCls}-lighter`]: true,
       [`${prefixCls}-hide`]: !this.state.showLighter,
     };
     return (<div className={classNames(className, `${prefixCls}-playground`)}>
-      <ul className={classNames(qfListCls)} ref="qfList">
-        <li>
+      <ul className={classNames(quickSearchBarCls)} ref="quickSearchBar">
+        {showInput ? (<li>
           <a data-qf-target={`.${prefixCls}-search`}>
             <i className={`${prefixCls}-icon-search`}/>
           </a>
-        </li>
+        </li>) : null}
         {qfHtml}
       </ul>
       <div className={`${prefixCls}-body`} ref="viewport">
         <div className={`${prefixCls}-scroller`} ref="container">
-          <div className={classNames(`${prefixCls}-search`, `${prefixCls}-input-autoclear`)}>
-            <div className={`${prefixCls}-search-input`}>
+          <div className={classNames(`${prefixCls}-search`, `${prefixCls}-input-autoclear`)}
+            style={{ display: showInput ? 'block' : 'none!important' }}
+          >
+            <form className={`${prefixCls}-search-input`}>
               <input
                 className={`${prefixCls}-search-value`}
                 type="text"
                 placeholder={placeholder}
-                data-cid="sinput" ref="sinput" {...inputProps}
+                data-cid="sinput" ref="sinput"
+                value={this.state.inputValue}
+                onChange={this.onInputChange}
               />
               <div
                 className={`${prefixCls}-search-clear`}
@@ -236,12 +238,12 @@ const MSelectList = React.createClass({
                   style={{ visibility: this.state.showSearch ? 'visible' : 'hidden' }}
                 />
               </div>
-            </div>
+            </form>
           </div>
           <div className={classNames(normalViewCls)} ref="normalView">{normalHtml}</div>
           <div className={classNames(searchViewCls)} ref="searchView">
             <ul className={`${prefixCls}-item`}>
-              {this.renderCommonItem(this.getMatchData(this.state.value))}
+              {this.renderCommonItem(this.getMatchData(this.state.inputValue))}
             </ul>
           </div>
         </div>

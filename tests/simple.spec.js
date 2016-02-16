@@ -6,7 +6,7 @@ const Simulate = TestUtils.Simulate;
 const $ = require('jquery');
 const MSelectList = require('../');
 import '../examples/demo.less';
-import {province} from '../examples/data';
+import { province } from '../examples/data';
 
 describe('simple', () => {
   let instance;
@@ -25,7 +25,7 @@ describe('simple', () => {
     instance = ReactDOM.render(
       <MSelectList className="wrapper"
         data={province}
-       />,
+      />,
     div);
     expect(ReactDOM.findDOMNode(instance).className.indexOf('wrapper') !== -1).to.be(true);
   });
@@ -34,13 +34,15 @@ describe('simple', () => {
     instance = ReactDOM.render(
       <MSelectList
         data={province}
-        defaultValue="bj"
-       />,
+        defaultInputValue="bj"
+        showInput
+        showQuickSearchBar={false}
+      />,
     div);
     expect($(instance.refs.searchView).text()).to.be('北京市');
   });
 
-  it('should fire onChange event', (done) => {
+  it('should fire onInputChange event', (done) => {
     function cb(value) {
       // todo: 避免用 setTimeout。 react setState并更新dom后，是否有相应事件抛出？
       setTimeout(() => {
@@ -52,14 +54,15 @@ describe('simple', () => {
     instance = ReactDOM.render(
       <MSelectList
         data={province}
-        onChange={cb}
-       />,
+        showInput
+        onInputChange={cb}
+      />,
     div);
     instance.refs.sinput.value = '400';
     Simulate.change(instance.refs.sinput);
   });
 
-  it('should fire onSelect event', (done) => {
+  it('should fire onChange event', (done) => {
     function cb(value) {
       // console.log(value);
       expect(value.spell).to.be('AnHuiSheng');
@@ -68,10 +71,10 @@ describe('simple', () => {
     instance = ReactDOM.render(
       <MSelectList
         data={province}
-        onSelect={cb}
-       />,
+        onChange={cb}
+      />,
     div);
-    // 'touchend' or 'mouseup' 时触发 onSelect。但它们在 'touchstart' or 'mousedown' 事件里注册。
+    // 'touchend' or 'mouseup' 时触发 onChange。但它们在 'touchstart' or 'mousedown' 事件里注册。
     // 所以先触发 mouseDown，一段时间后，再触发 mouseUp。
     // 但是仍不对！ todo...
     setTimeout(() => {
