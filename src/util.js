@@ -1,3 +1,4 @@
+/* eslint no-param-reassign:0*/
 import assign from 'object-assign';
 
 export const isTouchable = 'ontouchstart' in window;
