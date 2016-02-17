@@ -4,7 +4,7 @@ const ReactDOM = require('react-dom');
 const TestUtils = require('react-addons-test-utils');
 const Simulate = TestUtils.Simulate;
 const $ = require('jquery');
-const MSelectList = require('../');
+const MSelectList = require('../index.js');
 import '../examples/demo.less';
 import { province } from '../examples/data';
 
