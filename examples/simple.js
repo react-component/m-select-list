@@ -213,7 +213,7 @@ webpackJsonp([0,1],[
 	  getInitialState: function getInitialState() {
 	    return {
 	      clickFeedBack: false,
-	      showSearch: false,
+	      showSearchClear: false,
 	      showLighter: false,
 	      showQuickSearchBar: this.props.showQuickSearchBar,
 	      inputValue: this.props.inputValue || this.props.defaultInputValue || '',
@@ -255,15 +255,16 @@ webpackJsonp([0,1],[
 	    this.props.onChange(selectedItem[this.props.valueProp], selectedItem);
 	  },
 	  onInputChange: function onInputChange(e) {
+	    var inputValue = e.target.value;
 	    this.setState({
-	      inputValue: e.target.value
+	      inputValue: inputValue
 	    });
-	    this.props.onInputChange(e.target.value, e);
+	    this.props.onInputChange(inputValue, e);
 	  },
 	  onSearch: function onSearch() {
 	    this.setState({
 	      showQuickSearchBar: false,
-	      showSearch: true
+	      showSearchClear: true
 	    });
 	  },
 	  onClear: function onClear() {
@@ -272,7 +273,7 @@ webpackJsonp([0,1],[
 	    this.setState({
 	      inputValue: '',
 	      showQuickSearchBar: true,
-	      showSearch: false
+	      showSearchClear: false
 	    }, function () {
 	      _this.refs.sinput.blur();
 	    });
@@ -395,8 +396,8 @@ webpackJsonp([0,1],[
 	    var normalHtml = _renderData.normalHtml;
 	
 	    var quickSearchBarCls = (_quickSearchBarCls = {}, _defineProperty(_quickSearchBarCls, prefixCls + '-quick-search-bar', true), _defineProperty(_quickSearchBarCls, prefixCls + '-hide', !this.state.showQuickSearchBar), _defineProperty(_quickSearchBarCls, prefixCls + '-on', this.state.clickFeedBack), _quickSearchBarCls);
-	    var normalViewCls = (_normalViewCls = {}, _defineProperty(_normalViewCls, prefixCls + '-content', true), _defineProperty(_normalViewCls, prefixCls + '-hide', this.state.showSearch && !!this.state.inputValue.length), _normalViewCls);
-	    var searchViewCls = (_searchViewCls = {}, _defineProperty(_searchViewCls, prefixCls + '-content', true), _defineProperty(_searchViewCls, prefixCls + '-hide', !this.state.showSearch && this.state.inputValue.length), _searchViewCls);
+	    var normalViewCls = (_normalViewCls = {}, _defineProperty(_normalViewCls, prefixCls + '-content', true), _defineProperty(_normalViewCls, prefixCls + '-hide', this.state.showSearchClear && !!this.state.inputValue.length), _normalViewCls);
+	    var searchViewCls = (_searchViewCls = {}, _defineProperty(_searchViewCls, prefixCls + '-content', true), _defineProperty(_searchViewCls, prefixCls + '-hide', !this.state.showSearchClear || !this.state.inputValue.length), _searchViewCls);
 	    var lighterCls = (_lighterCls = {}, _defineProperty(_lighterCls, prefixCls + '-lighter', true), _defineProperty(_lighterCls, prefixCls + '-hide', !this.state.showLighter), _lighterCls);
 	    return _react2.default.createElement(
 	      'div',
@@ -446,7 +447,7 @@ webpackJsonp([0,1],[
 	                },
 	                _react2.default.createElement('i', {
 	                  className: prefixCls + '-icon-clear',
-	                  style: { visibility: this.state.showSearch ? 'visible' : 'hidden' }
+	                  style: { visibility: this.state.showSearchClear ? 'visible' : 'hidden' }
 	                })
 	              )
 	            )
