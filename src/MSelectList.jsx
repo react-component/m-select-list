@@ -45,7 +45,7 @@ const MSelectList = React.createClass({
   getInitialState() {
     return {
       clickFeedBack: false,
-      showSearch: false,
+      showSearchClear: false,
       showLighter: false,
       showQuickSearchBar: this.props.showQuickSearchBar,
       inputValue: this.props.inputValue || this.props.defaultInputValue || '',
@@ -84,22 +84,23 @@ const MSelectList = React.createClass({
     this.props.onChange(selectedItem[this.props.valueProp], selectedItem);
   },
   onInputChange(e) {
+    const inputValue = e.target.value;
     this.setState({
-      inputValue: e.target.value,
+      inputValue,
     });
-    this.props.onInputChange(e.target.value, e);
+    this.props.onInputChange(inputValue, e);
   },
   onSearch() {
     this.setState({
       showQuickSearchBar: false,
-      showSearch: true,
+      showSearchClear: true,
     });
   },
   onClear() {
     this.setState({
       inputValue: '',
       showQuickSearchBar: true,
-      showSearch: false,
+      showSearchClear: false,
     }, () => {
       this.refs.sinput.blur();
     });
@@ -196,11 +197,11 @@ const MSelectList = React.createClass({
     };
     const normalViewCls = {
       [`${prefixCls}-content`]: true,
-      [`${prefixCls}-hide`]: this.state.showSearch && !!this.state.inputValue.length,
+      [`${prefixCls}-hide`]: this.state.showSearchClear && !!this.state.inputValue.length,
     };
     const searchViewCls = {
       [`${prefixCls}-content`]: true,
-      [`${prefixCls}-hide`]: !this.state.showSearch && this.state.inputValue.length,
+      [`${prefixCls}-hide`]: !this.state.showSearchClear || !this.state.inputValue.length,
     };
     const lighterCls = {
       [`${prefixCls}-lighter`]: true,
@@ -236,7 +237,7 @@ const MSelectList = React.createClass({
               >
                 <i
                   className={`${prefixCls}-icon-clear`}
-                  style={{ visibility: this.state.showSearch ? 'visible' : 'hidden' }}
+                  style={{ visibility: this.state.showSearchClear ? 'visible' : 'hidden' }}
                 />
               </div>
             </form>
