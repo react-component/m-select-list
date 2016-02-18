@@ -37,6 +37,7 @@ describe('simple', () => {
         defaultInputValue="bj"
         showInput
         showQuickSearchBar={false}
+        showCurrentSelected={false}
       />,
     div);
     expect($(instance.refs.searchView).text()).to.be('北京市');

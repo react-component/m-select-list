@@ -1,5 +1,5 @@
 
 export default {
   currentQuickSearchText: '当前',
-  currentRegion: '当前地区',
+  currentSelectedTitle: '当前地区',
 };

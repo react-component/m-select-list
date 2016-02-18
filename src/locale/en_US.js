@@ -1,5 +1,5 @@
 
 export default {
   currentQuickSearchText: 'current',
-  currentRegion: 'current region',
+  currentSelectedTitle: 'current region',
 };

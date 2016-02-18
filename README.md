@@ -59,7 +59,7 @@ see example
 |----------|----------------|----------|--------------|
 |className | additional css class of root dom node | String | '' |
 |prefixCls | prefix class | String | 'rmc-select-list' |
-|placeholder | input placeholder | String | '搜索' |
+|showCurrentSelected | whether show selected item | bool | true |
 |showQuickSearchBar | whether show quick search bar | bool | true |
 |locale | the locale of area | Object | import from 'rmc-select-list/lib/locale/zh_CN' |
 |data | The data of list | array  | - |

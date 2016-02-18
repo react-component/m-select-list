@@ -17,6 +17,7 @@ const MSelectList = React.createClass({
     locale: PropTypes.object,
     valueProp: PropTypes.string,
     labelProp: PropTypes.string,
+    showCurrentSelected: PropTypes.bool,
     showQuickSearchBar: PropTypes.bool,
     showInput: PropTypes.bool,
     data: PropTypes.array,
@@ -35,6 +36,7 @@ const MSelectList = React.createClass({
       locale: defaultLocale,
       valueProp: 'value',
       labelProp: 'label',
+      showCurrentSelected: true,
       showQuickSearchBar: true,
       showInput: false,
       onInputChange: noop,
@@ -173,8 +175,10 @@ const MSelectList = React.createClass({
       const sel = this.props.data.filter(item => {
         return item[this.props.valueProp] === this.state.value;
       });
-      qfHtml.push(getQfItem(searchKey, locale.currentQuickSearchText));
-      normalHtml.push(getSection(searchKey, locale.currentRegion, sel));
+      if (this.props.showCurrentSelected) {
+        qfHtml.push(getQfItem(searchKey, locale.currentQuickSearchText));
+        normalHtml.push(getSection(searchKey, locale.currentSelectedTitle, sel));
+      }
     }
     Object.keys(data).forEach(item => {
       const QF = data[item][0].QF;
