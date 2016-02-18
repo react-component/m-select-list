@@ -185,6 +185,7 @@ webpackJsonp([0,1],[
 	    locale: _react.PropTypes.object,
 	    valueProp: _react.PropTypes.string,
 	    labelProp: _react.PropTypes.string,
+	    showCurrentSelected: _react.PropTypes.bool,
 	    showQuickSearchBar: _react.PropTypes.bool,
 	    showInput: _react.PropTypes.bool,
 	    data: _react.PropTypes.array,
@@ -203,6 +204,7 @@ webpackJsonp([0,1],[
 	      locale: _zh_CN2.default,
 	      valueProp: 'value',
 	      labelProp: 'label',
+	      showCurrentSelected: true,
 	      showQuickSearchBar: true,
 	      showInput: false,
 	      onInputChange: noop,
@@ -367,8 +369,10 @@ webpackJsonp([0,1],[
 	      var sel = this.props.data.filter(function (item) {
 	        return item[_this5.props.valueProp] === _this5.state.value;
 	      });
-	      qfHtml.push(getQfItem(searchKey, locale.currentQuickSearchText));
-	      normalHtml.push(getSection(searchKey, locale.currentRegion, sel));
+	      if (this.props.showCurrentSelected) {
+	        qfHtml.push(getQfItem(searchKey, locale.currentQuickSearchText));
+	        normalHtml.push(getSection(searchKey, locale.currentSelectedTitle, sel));
+	      }
 	    }
 	    Object.keys(data).forEach(function (item) {
 	      var QF = data[item][0].QF;
@@ -20726,7 +20730,7 @@ webpackJsonp([0,1],[
 	});
 	exports.default = {
 	  currentQuickSearchText: '当前',
-	  currentRegion: '当前地区'
+	  currentSelectedTitle: '当前地区'
 	};
 	module.exports = exports['default'];
 
@@ -20880,7 +20884,7 @@ webpackJsonp([0,1],[
 	});
 	exports.default = {
 	  currentQuickSearchText: 'current',
-	  currentRegion: 'current region'
+	  currentSelectedTitle: 'current region'
 	};
 	module.exports = exports['default'];
 
