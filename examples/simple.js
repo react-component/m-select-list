@@ -20747,7 +20747,7 @@ webpackJsonp([0,1],[
 	
 	var province = [{
 	  value: '11',
-	  label: '北京市',
+	  label: '北京市北京市北京市北京市北京市北京市北京市北京市北京市北京市',
 	  spell: 'BeiJingShi'
 	}, {
 	  value: '12',

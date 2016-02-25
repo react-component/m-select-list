@@ -129,16 +129,12 @@
 }
 .rmc-select-list-content .rmc-select-list-item li a {
   display: block;
-  height: 28px;
-  line-height: 28px;
+  line-height: 24px;
   font-size: 16px;
   padding: 8px 0px;
   margin-left: 15px;
+  margin-right: 32px;
   color: #333;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  margin-right: 30px;
-  overflow: hidden;
 }
 .rmc-select-list-content .rmc-select-list-item li:last-child a {
   border-bottom: none;
