@@ -2,7 +2,7 @@
 
 const province = [{
   value: '11',
-  label: '北京市北京市北京市北京市北京市北京市北京市北京市北京市北京市',
+  label: '北京市',
   spell: 'BeiJingShi'
 }, {
   value: '12',
@@ -46,7 +46,7 @@ const province = [{
   spell: 'ZheJiangSheng'
 }, {
   value: '34',
-  label: '安徽省',
+  label: '安徽省 AnHuiSheng AnHuiSheng AnHuiSheng AnHuiSheng AnHuiSheng',
   spell: 'AnHuiSheng'
 }, {
   value: '35',
