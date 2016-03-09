@@ -9,6 +9,7 @@
 .rmc-select-list-wrap,
 .rmc-select-list-body,
 .rmc-select-list-scroller {
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
   -ms-touch-action: none;
   -webkit-touch-callout: none;
@@ -108,12 +109,14 @@
   background: #fff;
 }
 .rmc-select-list-content .rmc-select-list-item-order {
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
   padding: 10px 15px;
   color: #9b9b9b;
   font-size: 14px;
   background: -webkit-gradient(linear, left top, left bottom, from(#ffffff), color-stop(0.5, #ffffff), color-stop(0.5, transparent)) top left no-repeat, -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#ffffff)) bottom left no-repeat, -webkit-gradient(linear, left top, left bottom, from(#e5e5e5), color-stop(0.5, #e5e5e5), color-stop(0.5, transparent)) top left no-repeat, -webkit-gradient(linear, left top, left bottom, from(#e5e5e5), to(#e5e5e5)) bottom left no-repeat, #f5f5f9;
   background: -webkit-linear-gradient(90deg, #ffffff, #ffffff) top left no-repeat, -webkit-linear-gradient(270deg, #ffffff, #ffffff) bottom left no-repeat, -webkit-linear-gradient(90deg, #e5e5e5, #e5e5e5, transparent, transparent) top left no-repeat, -webkit-linear-gradient(270deg, #e5e5e5, #e5e5e5, transparent, transparent) bottom left no-repeat, #f5f5f9;
+  background: -webkit-linear-gradient(bottom, #ffffff, #ffffff) top left no-repeat, -webkit-linear-gradient(top, #ffffff, #ffffff) bottom left no-repeat, -webkit-linear-gradient(bottom, #e5e5e5, #e5e5e5, transparent, transparent) top left no-repeat, -webkit-linear-gradient(top, #e5e5e5, #e5e5e5, transparent, transparent) bottom left no-repeat, #f5f5f9;
   background: linear-gradient(0deg, #ffffff, #ffffff) top left no-repeat, linear-gradient(180deg, #ffffff, #ffffff) bottom left no-repeat, linear-gradient(0deg, #e5e5e5, #e5e5e5, transparent, transparent) top left no-repeat, linear-gradient(180deg, #e5e5e5, #e5e5e5, transparent, transparent) bottom left no-repeat, #f5f5f9;
   -webkit-background-size: 0px 0px,0px 0px,100% 1px,100% 1px;
 }
@@ -121,6 +124,7 @@
   display: block;
   background: -webkit-gradient(linear, left top, left bottom, from(#ffffff), color-stop(0.5, #ffffff), color-stop(0.5, transparent)) top left no-repeat, -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#ffffff)) bottom left no-repeat, -webkit-gradient(linear, left top, left bottom, from(#e5e5e5), color-stop(0.5, #e5e5e5), color-stop(0.5, transparent)) top left no-repeat, -webkit-gradient(linear, left top, left bottom, from(#e5e5e5), to(#e5e5e5)) bottom left no-repeat, #ffffff;
   background: -webkit-linear-gradient(90deg, #ffffff, #ffffff) top left no-repeat, -webkit-linear-gradient(270deg, #ffffff, #ffffff) bottom left no-repeat, -webkit-linear-gradient(90deg, #e5e5e5, #e5e5e5, transparent, transparent) top left no-repeat, -webkit-linear-gradient(270deg, #e5e5e5, #e5e5e5, transparent, transparent) bottom left no-repeat, #ffffff;
+  background: -webkit-linear-gradient(bottom, #ffffff, #ffffff) top left no-repeat, -webkit-linear-gradient(top, #ffffff, #ffffff) bottom left no-repeat, -webkit-linear-gradient(bottom, #e5e5e5, #e5e5e5, transparent, transparent) top left no-repeat, -webkit-linear-gradient(top, #e5e5e5, #e5e5e5, transparent, transparent) bottom left no-repeat, #ffffff;
   background: linear-gradient(0deg, #ffffff, #ffffff) top left no-repeat, linear-gradient(180deg, #ffffff, #ffffff) bottom left no-repeat, linear-gradient(0deg, #e5e5e5, #e5e5e5, transparent, transparent) top left no-repeat, linear-gradient(180deg, #e5e5e5, #e5e5e5, transparent, transparent) bottom left no-repeat, #ffffff;
   -webkit-background-size: 0px 0px,15px 1px,0px 0px,100% 1px;
 }
@@ -151,6 +155,7 @@
   width: 100%;
   height: 100%;
   background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAACs0lEQVR42s1Yz0tUURQWohLKUhcW2a4oRBeaiEQrCRGXLaKippUg/Q3+E/MnOG6EWYnE4AucR8y8+V27saZaRJG1qdQhDcwf3wcjHK7Pd3/gTPPg4w5nzj3nu+eed859t8P2yWQyPeVyOQYkAB+oVSqVOsHfDVmCOtTtaNZTLBYfwGkajnYxHpigoZvm3FMjAqP3gEA4cgJt0JYzkWQyeQaG4jR2yojTthUZ3/e7sZpXNNAM0DZ9GJPBpDVObDLWtKQYSrfIuEcqcvtEzrQS8RPfJir8D9B3GKFcxKQ3hUJhFOM48MnC2R4wD9uLGPejSsKxohdluFQqDR/pgth1yD6akIGj52LBc1H65CBzJ60J6ZBcQC6X64f8Q4T+PyziqZKfdzQLSMvetKsh9AXjDekgm81eg/x9GBngiULmLGRLujZDLgxlzDDxviIyN6UjROEq/nsnjUL2SCkl50jG0EeMhBYskvQb9voWHYmcugJ5tRHlhyFklk3tkwsJ+Zav6Trm3JaOgyDog2xaylKp1HnovrR8/X0SqjnUje/5fH5AElDJQCflYLfGhKs7FrMfyJfBkF7Yif9XHItk3ZUQ8VdskywJvZC/dVzklrJl7mTUY24Fj8uWWSc19Hfwpk1JAp7nXRA5Jc9UZZekTlhM2AYmVTKQvQZ+AiNKQbwMWdHCfoLF7ZkpGejeV6JwEf9lhN4vNmGlTl2CPG/ig1xMWgfxB5hQWkcX5mVDdH/D8FiIbmDSOkyb66y6as1xZQMYl3OYY7rmanr8IKHHMi+AgsEWb8LuXXH8mDY+fvDRhPQzMMFCCL2STV3B+AKYAdYj9IK2O8K2/SFffq16LSTj0afJh2K1BWSqtl+vXjMjQx/tf9nQ/tcx+gurVYcLq1WbCyunKz02QXmlB2wR8kqPOi5XeofRInqx8q/8DQAAAABJRU5ErkJggg==") no-repeat;
+  -webkit-background-size: 16px auto;
   background-size: 16px auto;
 }
 .rmc-select-list-search {
@@ -159,7 +164,9 @@
   display: -webkit-flex;
   background: -webkit-gradient(linear, left top, left bottom, from(#d9d9e1), color-stop(0.5, #d9d9e1), color-stop(0.5, transparent)) bottom left no-repeat, #efeff4;
   background: -webkit-linear-gradient(270deg, #d9d9e1, #d9d9e1, #d9d9e1) bottom left no-repeat, #efeff4;
+  background: -webkit-linear-gradient(top, #d9d9e1, #d9d9e1, #d9d9e1) bottom left no-repeat, #efeff4;
   background: linear-gradient(180deg, #d9d9e1, #d9d9e1, #d9d9e1) bottom left no-repeat, #efeff4;
+  -webkit-background-size: 100% 1px;
   background-size: 100% 1px;
 }
 .rmc-select-list-search .rmc-select-list-search-input {
@@ -175,6 +182,7 @@
   -webkit-box-flex: 1;
   -webkit-flex: 1;
   border-radius: 5px;
+  -webkit-background-clip: padding-box;
   background-clip: padding-box;
   padding-right: 6px;
 }
@@ -192,6 +200,7 @@
   border-radius: 5px 0 0 5px;
   background-repeat: no-repeat;
   background-position: 6px center;
+  -webkit-background-size: 16px 16px;
   background-size: 16px 16px;
   outline: 0 none;
 }

@@ -101,13 +101,13 @@ webpackJsonp([0,1],[
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
-
+	
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-
+	
 	var _src = __webpack_require__(5);
-
+	
 	var _src2 = _interopRequireDefault(_src);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -121,13 +121,13 @@ webpackJsonp([0,1],[
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
-
+	
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-
+	
 	var _MSelectList = __webpack_require__(6);
-
+	
 	var _MSelectList2 = _interopRequireDefault(_MSelectList);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -20292,13 +20292,13 @@ webpackJsonp([0,1],[
 	};
 	
 	function handleScrolling(eventManager, instance) {
-	  var _lastEl = undefined;
-	  var _startY = undefined;
-	  var _pageY = undefined;
-	  var _distY = undefined;
-	  var _isAnimating = undefined;
-	  var _startTime = undefined;
-	  var _endTime = undefined;
+	  var _lastEl = void 0;
+	  var _startY = void 0;
+	  var _pageY = void 0;
+	  var _distY = void 0;
+	  var _isAnimating = void 0;
+	  var _startTime = void 0;
+	  var _endTime = void 0;
 	
 	  instance._y = 0;
 	  instance.refs.viewport.style.overflow = 'hidden';
@@ -20334,8 +20334,8 @@ webpackJsonp([0,1],[
 	
 	    function step() {
 	      var now = getTime();
-	      var newY = undefined;
-	      var easing = undefined;
+	      var newY = void 0;
+	      var easing = void 0;
 	
 	      if (now >= destTime) {
 	        _translate(destY);
@@ -20555,7 +20555,7 @@ webpackJsonp([0,1],[
 	
 	  // relative to container
 	  function _getEle(e, basePos) {
-	    var _pos = undefined;
+	    var _pos = void 0;
 	    if (e.pageY >= basePos.top && e.pageY <= basePos.top + height) {
 	      _pos = Math.floor((e.pageY - basePos.top) / _avgH);
 	      if (_pos in hCache) {
@@ -20567,7 +20567,7 @@ webpackJsonp([0,1],[
 	
 	  var _inMoving = false;
 	  var _isProcessed = false;
-	  var _basePos = undefined;
+	  var _basePos = void 0;
 	  var tAttr = 'data-qf-target';
 	
 	  function _updatePosition(ele) {
@@ -20581,7 +20581,7 @@ webpackJsonp([0,1],[
 	      instance.refs.container.style.top = -pos + 'px';
 	    }
 	  }
-	  var _timer = undefined;
+	  var _timer = void 0;
 	  function _updateLighter(ele, isEnd) {
 	    var el = ele;
 	    if (!el.getAttribute(tAttr)) {
@@ -20607,7 +20607,7 @@ webpackJsonp([0,1],[
 	    }
 	  }
 	
-	  var _target = undefined;
+	  var _target = void 0;
 	  function _start(e) {
 	    _target = e.target;
 	    if (_target.getAttribute(tAttr) || _target.parentNode.getAttribute(tAttr)) {
@@ -20622,9 +20622,9 @@ webpackJsonp([0,1],[
 	    });
 	  }
 	  function _move(e) {
-	    var ele = undefined;
-	    var id = undefined;
-	    var target = undefined;
+	    var ele = void 0;
+	    var id = void 0;
+	    var target = void 0;
 	
 	    if (_inMoving && _target) {
 	      target = _getEle(_event(e), _basePos);
@@ -20646,7 +20646,7 @@ webpackJsonp([0,1],[
 	      return;
 	    }
 	    var id = _target.getAttribute(tAttr) || _target.parentNode.getAttribute(tAttr);
-	    var ele = undefined;
+	    var ele = void 0;
 	    if (id) {
 	      if (_inMoving && !_isProcessed) {
 	        ele = element.querySelector(id);
@@ -20747,7 +20747,7 @@ webpackJsonp([0,1],[
 	
 	var province = [{
 	  value: '11',
-	  label: '北京市北京市北京市北京市北京市北京市北京市北京市北京市北京市',
+	  label: '北京市',
 	  spell: 'BeiJingShi'
 	}, {
 	  value: '12',
@@ -20791,7 +20791,7 @@ webpackJsonp([0,1],[
 	  spell: 'ZheJiangSheng'
 	}, {
 	  value: '34',
-	  label: '安徽省',
+	  label: '安徽省 AnHuiSheng AnHuiSheng AnHuiSheng AnHuiSheng AnHuiSheng',
 	  spell: 'AnHuiSheng'
 	}, {
 	  value: '35',
